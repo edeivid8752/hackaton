@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#063765">
+<meta name="description" content="LINCE GUARD: control de entradas y salidas accesible para tablets y teléfonos Android.">
+<title>LINCE GUARD · Control de acceso móvil</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/guard.css">
+</head>
+<body>
+<div class="mobile-app">
+ <header class="masthead">
+  <div class="brand"><span class="mark" aria-hidden="true">◈</span><div><strong>LINCE <em>GUARD</em></strong><small>CONTROL DE ACCESO · DEMO UAdeO</small></div></div>
+  <div class="connection" id="connection" role="status"><span class="dot"></span><span id="connectionText">Conectando</span></div>
+ </header>
+ <main>
+  <section id="loginView" class="login-layout">
+   <div class="hero-icon" aria-hidden="true">🛡️</div>
+   <div class="welcome-text"><p class="overline">PERSONAL DE SEGURIDAD</p><h1>Bienvenido a LINCE GUARD</h1><p>Una herramienta sencilla para registrar quién entra y sale de la universidad.</p></div>
+   <form id="loginForm" class="surface sign-in">
+    <label for="loginUser">Usuario</label><input id="loginUser" autocomplete="username" value="guardia" required>
+    <label for="loginPassword">Contraseña</label><input id="loginPassword" type="password" autocomplete="current-password" required>
+    <p id="loginError" class="form-error" role="alert" hidden></p>
+    <button class="action action-blue" type="submit" id="loginButton"><span aria-hidden="true">➜</span> ENTRAR AL KIOSCO</button>
+    <p class="hint">Cuenta de prueba: <strong>guardia</strong> / <strong>Guardia123!</strong></p>
+   </form>
+   <p class="muted small">Prototipo educativo · No usar con datos personales reales.</p>
+  </section>
+  <section id="workView" hidden>
+   <div class="top-line"><div><p class="overline">ESTACIÓN DE SEGURIDAD</p><h1 id="workHeading">Control de acceso</h1></div><button class="sign-out" id="signOut" type="button" aria-label="Cerrar sesión">Salir <span aria-hidden="true">↗</span></button></div>
+   <nav class="main-tabs" aria-label="Secciones de LINCE GUARD">
+    <button id="tabScan" type="button" class="tab active" aria-current="page">▣ <span>Escanear</span></button>
+    <button id="tabVisitor" type="button" class="tab">♧ <span>Visitantes</span></button>
+   </nav>
+   <section id="scanSection" aria-label="Registrar acceso">
+    <div class="stats-bar"><div><small>PERSONAS DENTRO</small><strong id="insideCount">0</strong></div><div class="stats-divider"></div><div><small>AFORO MÁXIMO</small><strong id="capacityCount">500</strong></div><span class="stats-icon" aria-hidden="true">♧</span></div>
+    <div class="surface scan-panel">
+     <div class="scan-panel-heading"><span class="eyebrow">ESCANEO DE CREDENCIALES</span><span class="pill">AUTOMÁTICO</span></div>
+     <h2>Escanea una credencial</h2>
+     <p>La primera lectura registra entrada. La siguiente, después de 12 segundos, registra salida.</p>
+     <div class="scanner-visual" id="scannerVisual" aria-hidden="true"><div class="qr-corners"><span></span><span></span><span></span><span></span></div><span class="qr-glyph">▦</span><div class="scan-sweep"></div></div>
+     <div class="scan-actions">
+      <button class="action action-blue" id="cameraButton" type="button"><span class="action-icon" aria-hidden="true">▣</span> ESCANEO EN VIVO</button>
+      <label class="action action-orange photo-button" for="photoInput"><span class="action-icon" aria-hidden="true">📷</span> TOMAR FOTO DEL QR</label>
+      <input id="photoInput" type="file" accept="image/*" capture="environment" class="sr-only" aria-label="Tomar fotografía o elegir imagen con código QR">
+     </div>
+     <p class="camera-tip" id="cameraTip">En Android por Wi-Fi, usa <b>Tomar foto del QR</b>. El video en vivo necesita HTTPS.</p>
+     <div class="video-wrap" id="videoWrap" hidden><video id="cameraVideo" autoplay muted playsinline aria-label="Vista de la cámara"></video><button id="stopCamera" type="button" class="action action-quiet">Detener cámara</button></div>
+     <details class="manual"><summary>⌨ Ingresar código manualmente</summary><form id="manualForm" class="manual-form"><label for="manualCode">Código de la credencial</label><div class="manual-row"><input id="manualCode" placeholder="LIN-1001" maxlength="48" autocomplete="off" spellcheck="false" required><button type="submit">VALIDAR</button></div></form></details>
+    </div>
+    <section id="resultCard" class="result-card surface idle" aria-label="Resultado del último escaneo" aria-live="assertive" aria-atomic="true"><span class="result-symbol" aria-hidden="true">◉</span><div class="result-copy"><h2>Esperando credencial</h2><p>Escanea un código para verificar el acceso.</p></div></section>
+    <div class="options-row"><label class="toggle-line"><input id="voiceToggle" type="checkbox" checked><span aria-hidden="true">◖))</span> Avisos por voz</label><span class="subtle" id="lastUpdate">Sin movimientos recientes</span></div>
+    <div class="demo-hint">Códigos ficticios para practicar: <b>LIN-1001</b> (activo) y <b>LIN-9001</b> (inactivo). <a href="/credenciales.html" target="_blank" rel="noopener">Ver QR de prueba</a></div>
+   </section>
+   <section id="visitorSection" hidden aria-label="Registro de visitantes">
+    <div class="surface visitor-panel"><p class="eyebrow">PERSONAL EXTERNO</p><h2>Registrar visitante</h2><p>Solicita identificación y confirma físicamente la autorización antes de permitir el acceso.</p>
+     <form id="visitorForm" class="visitor-form">
+      <label>Nombre de la persona<input name="name" minlength="3" maxlength="120" required placeholder="Nombre completo"></label>
+      <label>Tipo de visitante<select name="type"><option value="visitante">Visitante / invitado</option><option value="proveedor">Proveedor</option></select></label>
+      <label>Motivo<input name="reason" minlength="3" maxlength="120" required placeholder="Ej. Cita en coordinación"></label>
+      <label>Área o persona responsable<input name="host_name" minlength="3" maxlength="120" required placeholder="Ej. Dirección"></label>
+      <label>Vigencia<select name="hours"><option value="2">2 horas</option><option value="4">4 horas</option><option value="8" selected>8 horas</option><option value="24">24 horas</option></select></label>
+      <button class="action action-blue" type="submit" id="visitorSave">CREAR AUTORIZACIÓN</button>
+     </form>
+     <div id="visitorResult" class="visitor-result" hidden aria-live="polite"><span class="ok-circle">✓</span><h3>Autorización creada</h3><p>Código temporal</p><strong id="visitorCode"></strong><p>Verifica la identidad antes de usarlo. No se registra entrada automáticamente.</p><button id="visitorEnter" class="action action-orange" type="button">REGISTRAR ENTRADA</button></div>
+    </div>
+   </section>
+  </section>
+ </main>
+ <footer>LINCE GUARD V0.2 · PROTOTIPO EDUCATIVO · COLORES INSPIRADOS EN UAdeO</footer>
+</div>
+<!-- En Windows, preparar-lector-qr-offline.bat coloca jsQR aqui. CDN solo como respaldo. -->
+<script src="/vendor/jsQR.js" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js'" defer></script>
+<script src="/guard.js" defer></script>
+</body></html>

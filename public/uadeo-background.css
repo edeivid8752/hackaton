@@ -1,0 +1,86 @@
+/*
+ * LINCE ACCESS V0.2 — Fondo guinda difuminado en movimiento.
+ * SOLO DISEÑO: no altera vistas, datos, eventos, API ni permisos.
+ * Fondo de toda el área administrativa: tonos rosados / guinda UAdeO,
+ * veladuras suaves que se desplazan lentamente, sin formas geométricas.
+ */
+:root { --uadeo-fondo-guinda: #9d253c; }
+
+/* Base mucho más cálida: ya no hay un gran espacio blanco vacío. */
+.app-shell .main-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: clip; /* Evita barras de desplazamiento por la niebla animada. */
+  background-color: #e8c5cf;
+  background-image: linear-gradient(125deg,
+    #e8c4cd 0%,
+    #edd3d9 29%,
+    #e4bcc7 60%,
+    #ebcbd3 82%,
+    #e1b5c2 100%);
+}
+
+/* Capas de color sin bordes, líneas, círculos ni textura geométrica.
+   Se mueven por transformación para que el desplazamiento sea suave. */
+.app-shell .main-shell::before,
+.app-shell .main-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border: 0;
+  border-radius: 0;
+  will-change: transform;
+}
+
+.app-shell .main-shell::before {
+  background-image:
+    radial-gradient(ellipse 63% 49% at 12% 17%, rgba(128, 24, 50, .23), transparent 82%),
+    radial-gradient(ellipse 58% 54% at 83% 32%, rgba(193, 69, 98, .26), transparent 85%),
+    radial-gradient(ellipse 60% 60% at 39% 79%, rgba(155, 37, 60, .22), transparent 86%),
+    radial-gradient(ellipse 51% 45% at 93% 91%, rgba(114, 31, 58, .19), transparent 84%);
+  animation: uadeo-niebla-uno 25s ease-in-out infinite alternate;
+}
+
+.app-shell .main-shell::after {
+  background-image:
+    radial-gradient(ellipse 67% 52% at 65% 10%, rgba(255, 245, 247, .34), transparent 85%),
+    radial-gradient(ellipse 55% 68% at 3% 63%, rgba(189, 61, 93, .19), transparent 88%),
+    radial-gradient(ellipse 64% 58% at 76% 79%, rgba(245, 198, 208, .25), transparent 90%);
+  opacity: .85;
+  animation: uadeo-niebla-dos 32s ease-in-out infinite alternate;
+}
+
+@keyframes uadeo-niebla-uno {
+  0%   { transform: translate3d(-1.6%, -1%, 0) scale(1.025); }
+  50%  { transform: translate3d(1.2%, 1.6%, 0) scale(1.055); }
+  100% { transform: translate3d(2.4%, -1.4%, 0) scale(1.035); }
+}
+@keyframes uadeo-niebla-dos {
+  0%   { transform: translate3d(1.5%, .5%, 0) scale(1.03); }
+  50%  { transform: translate3d(-1.9%, -1.8%, 0) scale(1.06); }
+  100% { transform: translate3d(-.7%, 2%, 0) scale(1.04); }
+}
+
+/* El fondo se mantiene detrás de todas las pantallas, formularios y tarjetas. */
+.app-shell .main-content { position: relative; }
+.app-shell .main-content::before { content: none !important; display: none !important; }
+
+/* En pantallas pequeñas el fondo sigue siendo guinda, con igual legibilidad. */
+@media (max-width: 740px) {
+  .app-shell .main-shell {
+    background-image: linear-gradient(145deg, #edd4da 0%, #e6c2cc 52%, #dfb5c2 100%);
+  }
+  .app-shell .main-shell::before {
+    background-image:
+      radial-gradient(ellipse 82% 45% at 5% 22%, rgba(157, 37, 60, .23), transparent 91%),
+      radial-gradient(ellipse 75% 64% at 91% 72%, rgba(182, 62, 88, .21), transparent 90%);
+  }
+}
+
+/* Accesibilidad: quien solicite reducir movimiento ve el mismo fondo estático. */
+@media (prefers-reduced-motion: reduce) {
+  .app-shell .main-shell::before,
+  .app-shell .main-shell::after { animation: none !important; will-change: auto; transform: none; }
+}

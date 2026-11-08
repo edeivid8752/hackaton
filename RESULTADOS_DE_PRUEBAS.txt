@@ -1,0 +1,19 @@
+LINCE ACCESS V0.2 — Verificación del 7 de noviembre de 2026
+
+Pruebas automatizadas de integración contra servidor local y base de datos desechable:
+- tests/smoke.js: 21 comprobaciones superadas
+- tests/mobile.js: 19 comprobaciones superadas
+TOTAL: 40 comprobaciones superadas
+
+Probado: API, sesiones de prueba, acceso permitido/denegado,
+rebotes, aforo compartido, creación de visitantes, permisos y
+archivos de LINCE GUARD.
+
+Vista móvil: revisada con Chromium en vista simulada de 390 px;
+no se observó desbordamiento horizontal.
+
+Aún NO se han hecho pruebas reales de conectividad con el Android
+del usuario, cámara física ni autorización del guardia en campo.
+El acceso del navegador Chromium al servidor local en este entorno
+de validación fue bloqueado administrativamente; por ello no se
+certifica una prueba end-to-end de Chrome con API y cámara reales.

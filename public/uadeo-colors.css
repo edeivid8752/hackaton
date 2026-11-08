@@ -1,0 +1,104 @@
+/*
+ * LINCE ACCESS V0.2 — Ajuste de identidad UAdeO.
+ * SOLO PRESENTACIÓN: menú lateral automático y jerarquía de botones.
+ * Este archivo se carga al final para no alterar scripts, rutas o datos.
+ */
+:root {
+  --uadeo-guinda: #9d253c;
+  --uadeo-guinda-hover: #831d32;
+  --uadeo-guinda-active: #75192c;
+  --uadeo-guinda-soft: #fff1f4;
+  --uadeo-guinda-border: #ddb4bf;
+}
+
+/* Menú rojo guinda, con sombras y profundidad sobrias; sigue ocultándose
+   completamente fuera de la zona de activación del borde izquierdo. */
+.app-shell .sidebar,
+.app-shell.sidebar-collapsed .sidebar,
+.app-shell.sidebar-hover-open .sidebar {
+  background: linear-gradient(170deg, #8e2239 0%, #741b31 50%, #501325 100%);
+  color: #ffffff;
+  box-shadow: 8px 0 32px rgba(62, 13, 30, .19);
+}
+.app-shell .side-top { border-bottom-color: rgba(255, 255, 255, .18); }
+.app-shell .sidebar .brand-icon { color: #fff8fa; }
+.app-shell .sidebar .brand-name { color: #ffffff; }
+.app-shell .sidebar .brand-name small,
+.app-shell .nav-label,
+.app-shell .campus-box small,
+.app-shell .sidebar-user small { color: #f3cbd4; }
+.app-shell .sidebar .nav-item { color: #f6dce3; }
+.app-shell .sidebar .nav-item.active {
+  color: #ffffff;
+  background: #b63952;
+  box-shadow: inset 3px 0 0 #ffd6df;
+}
+.app-shell .sidebar .nav-item:hover:not(.active),
+.app-shell .sidebar .nav-item:focus-visible:not(.active) {
+  background: rgba(255, 255, 255, .14);
+  color: #ffffff;
+}
+.app-shell .sidebar .nav-item:focus-visible {
+  outline: 2px solid #ffd6df;
+  outline-offset: 2px;
+}
+.app-shell .campus-box {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .17);
+}
+.app-shell .sidebar-user { border-top-color: rgba(255, 255, 255, .18); }
+.app-shell .sidebar-avatar { background: #f7e6ea; color: #781c32; }
+.app-shell .logout-side { color: #f6dce3; }
+.app-shell .logout-side:hover { color: #ffffff; }
+
+/* Línea que señala la zona invisible para abrir el menú con el cursor. */
+@media (min-width: 741px) and (hover: hover) and (pointer: fine) {
+  #sidebarCollapseToggle.sidebar-hover-trigger::after { background: var(--uadeo-guinda); }
+  #sidebarCollapseToggle.sidebar-hover-trigger:focus-visible { outline-color: var(--uadeo-guinda); }
+}
+
+/* Acciones principales del panel. Las secundarias se mantienen claras
+   para que no todos los controles compitan visualmente entre sí. */
+.app-shell .btn-primary,
+.app-shell .btn-orange,
+#view-dashboard #refreshBtn {
+  background: var(--uadeo-guinda);
+  border-color: var(--uadeo-guinda);
+  color: #ffffff;
+}
+.app-shell .btn-primary:hover,
+.app-shell .btn-orange:hover,
+#view-dashboard #refreshBtn:hover {
+  background: var(--uadeo-guinda-hover);
+  border-color: var(--uadeo-guinda-hover);
+  color: #ffffff;
+}
+.app-shell .btn-primary:focus-visible,
+.app-shell .btn-orange:focus-visible,
+#view-dashboard #refreshBtn:focus-visible {
+  outline: 3px solid #dc8497;
+  outline-offset: 3px;
+}
+.app-shell .btn-outline {
+  background: #ffffff;
+  color: var(--uadeo-guinda);
+  border-color: var(--uadeo-guinda-border);
+}
+.app-shell .btn-outline:hover {
+  background: var(--uadeo-guinda-soft);
+  color: var(--uadeo-guinda-hover);
+  border-color: var(--uadeo-guinda);
+}
+.app-shell .btn-light { background: #f4f6f8; color: #3d586c; }
+.app-shell .btn-light:hover { background: #e8eef2; color: #243e52; }
+
+/* Estado visual del título del dashboard; conservar verdes de éxito y
+   rojos de error originales en los mensajes y el escáner. */
+#view-dashboard .welcome-strip h2::before { background: var(--uadeo-guinda); }
+.app-shell .foot-panel { border-left-color: var(--uadeo-guinda); }
+
+/* Inicio de sesión: coherencia con los botones primarios del administrador. */
+.login-card .btn-primary { background: var(--uadeo-guinda); color: #fff; }
+.login-card .btn-primary:hover { background: var(--uadeo-guinda-hover); }
+
+/* No inventar movimiento: conservar las animaciones y la opción de movimiento reducido. */

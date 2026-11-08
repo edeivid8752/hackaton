@@ -1,0 +1,129 @@
+/*
+  LINCE ADMIN V0.2 — Animaciones discretas + acentos guinda UAdeO.
+  Exclusivamente presentación. Ningún cambio a APIs, autenticación o datos.
+  Cargado después de styles.css, reference-theme.css y sidebar-hover.css.
+*/
+:root {
+  --uadeo-guinda: #9d253c;
+  --uadeo-guinda-hover: #822036;
+  --uadeo-guinda-suave: #f7edf0;
+  --uadeo-guinda-linea: #bd5368;
+}
+/* Acentos contenidos: encabezado del dashboard, acción principal y selección. */
+#view-dashboard .welcome-strip h2::before {
+  background: var(--uadeo-guinda);
+  box-shadow: none;
+}
+.sidebar .nav-item.active {
+  box-shadow: inset 3px 0 0 var(--uadeo-guinda-linea);
+}
+.app-shell .btn-orange {
+  background: var(--uadeo-guinda);
+  color: #fff;
+  border-color: var(--uadeo-guinda);
+}
+.app-shell .btn-orange:hover { background: var(--uadeo-guinda-hover); color: #fff; }
+.login-card .btn-primary { background: var(--uadeo-guinda); color: white; }
+.login-card .btn-primary:hover { background: var(--uadeo-guinda-hover); }
+.login-shell .eyebrow.accent { color: #f4c3cf; }
+.login-card .mobile-brand strong { color: var(--uadeo-guinda); }
+/* Mantener azul/turquesa en métricas y acciones secundarias. */
+
+/* 1 — Entrada escalonada de tarjetas. Se repite al volver al dashboard. */
+@keyframes lince-card-appear {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+#view-dashboard:not(.hidden) .stat-card {
+  animation: lince-card-appear .37s cubic-bezier(.2,.75,.3,1) backwards;
+  transition: transform .19s ease, box-shadow .19s ease, border-color .19s ease;
+  will-change: auto;
+}
+#view-dashboard:not(.hidden) .stat-card:nth-child(2) { animation-delay: .055s; }
+#view-dashboard:not(.hidden) .stat-card:nth-child(3) { animation-delay: .11s; }
+#view-dashboard:not(.hidden) .stat-card:nth-child(4) { animation-delay: .165s; }
+/* 2 — Elevación discreta en las tarjetas de estadísticas. */
+@media (hover:hover) and (pointer:fine) {
+  #view-dashboard .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 29px rgba(12,39,62,.12);
+    border-color: #c8d8e2;
+  }
+  .app-shell .btn:hover:not(:disabled) { transform: translateY(-1px); }
+}
+.app-shell .btn:active:not(:disabled) { transform: translateY(0) scale(.985); }
+.app-shell .btn { transition: transform .17s ease, box-shadow .17s ease, background-color .17s ease, border-color .17s ease; }
+
+/* 3 — Cada vez que se dibujan barras reales, aparecen con llenado progresivo. */
+@keyframes lince-bar-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+#careerBars .bar-fill {
+  transform-origin: left center;
+  animation: lince-bar-fill .55s cubic-bezier(.18,.75,.25,1) both;
+}
+#careerBars .bar-group:nth-child(2) .bar-fill { animation-delay: .07s; }
+#careerBars .bar-group:nth-child(3) .bar-fill { animation-delay: .14s; }
+#careerBars .bar-group:nth-child(4) .bar-fill { animation-delay: .21s; }
+#careerBars .bar-group:nth-child(5) .bar-fill { animation-delay: .28s; }
+#careerBars .bar-group:nth-child(6) .bar-fill { animation-delay: .35s; }
+
+/* 4 — Superficie visual del conteo, sin tocar el texto real ni su ID. */
+#view-dashboard .stat-number.count-tweening {
+  color: transparent !important;
+  position: relative;
+}
+#view-dashboard .stat-number.count-tweening::after {
+  content: attr(data-count-visual);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #0d304d;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 5 — Transición breve de contenido al cambiar de vista, sin bloquear controles. */
+@keyframes lince-view-reveal {
+  from { opacity: .25; transform: translate3d(0, 7px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.app-shell .view:not(.hidden) {
+  animation: lince-view-reveal .24s ease-out both;
+}
+
+/* 6 — Entrada y retirada suaves de los avisos; mismo contenido y temporizador. */
+.app-shell ~ .toast, #toast {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  visibility: visible;
+  transition: opacity .23s ease-out, transform .23s ease-out, visibility 0s;
+}
+#toast.hidden {
+  display: block !important; /* Supera el display:none global solo para esta notificación. */
+  opacity: 0;
+  transform: translate3d(22px, 0, 0);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .23s ease-in, transform .23s ease-in, visibility 0s linear .23s;
+}
+#toast:not(.hidden) { pointer-events: auto; }
+
+@media (max-width:740px) {
+  #view-dashboard:not(.hidden) .stat-card { animation-duration:.3s; }
+  #toast { left: 14px; right: 14px; bottom: 18px; max-width: unset; }
+}
+/* Respetar accesibilidad y modo de movimiento reducido del sistema operativo. */
+@media (prefers-reduced-motion:reduce) {
+  #view-dashboard:not(.hidden) .stat-card,
+  .app-shell .view:not(.hidden),
+  #careerBars .bar-fill { animation: none !important; }
+  #view-dashboard .stat-card,
+  .app-shell .btn,
+  #toast,
+  #toast.hidden { transition:none !important; }
+}

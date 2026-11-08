@@ -1,0 +1,162 @@
+/*
+ * LINCE ACCESS V0.2 — Paleta aprobada de superficies SOLIDAS.
+ * Solamente presentación. No modifica lógica, autenticación, datos ni API.
+ *  Fondo:  #76283B (guinda profundo)
+ *  Menú:   #692234 (guinda lateral)
+ *  Tarjetas: #DFC397 (oro champán)
+ * Sin degradados ni niebla cromática: cada superficie tiene un color propio.
+ */
+:root {
+  --lince-background-solid: #76283b;
+  --lince-sidebar-solid: #692234;
+  --lince-card-solid: #dfc397;
+  --lince-ink-on-gold: #422334;
+  --lince-text-on-guinda: #f1dbb7;
+}
+
+/* Lienzo completo en guinda profundo. La antigua niebla y sus dos capas
+   pseudo-elemento se anulan, pero las animaciones de contenido se conservan. */
+html:has(.app-shell:not(.hidden)),
+body:has(.app-shell:not(.hidden)) {
+  background: var(--lince-background-solid);
+}
+.app-shell,
+.app-shell .main-shell {
+  background: var(--lince-background-solid) !important;
+  background-image: none !important;
+}
+.app-shell .main-shell::before,
+.app-shell .main-shell::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+.app-shell .main-content { background: transparent; }
+
+/* Pestaña lateral que aparece al acercarse al borde. Es un tono muy cercano
+   al color de fondo para que visualmente pertenezcan a la misma familia. */
+.app-shell .sidebar,
+.app-shell.sidebar-collapsed .sidebar,
+.app-shell.sidebar-hover-open .sidebar {
+  background: var(--lince-sidebar-solid) !important;
+  background-image: none !important;
+  border-right: 1px solid rgba(223,195,151,.12);
+  box-shadow: 8px 0 30px rgba(41,8,21,.25);
+}
+.app-shell .sidebar .nav-item.active {
+  background: #884054;
+  box-shadow: inset 3px 0 0 var(--lince-card-solid);
+}
+.app-shell .sidebar .nav-item:hover:not(.active),
+.app-shell .sidebar .nav-item:focus-visible:not(.active) {
+  background: #803849;
+}
+.app-shell .sidebar .brand-name,
+.app-shell .sidebar-user strong,
+.app-shell .campus-box strong { color: #f6e2c2; }
+.app-shell .sidebar .brand-name small,
+.app-shell .sidebar .nav-label,
+.app-shell .sidebar .campus-box small,
+.app-shell .sidebar .sidebar-user small { color: #dfc397; }
+.app-shell .sidebar .sidebar-avatar {
+  background: var(--lince-card-solid);
+  color: var(--lince-sidebar-solid);
+}
+
+/* Oro champán plano para tarjetas, paneles, tablas y formularios. */
+.app-shell .stat-card,
+.app-shell .panel,
+.app-shell .foot-panel {
+  background: var(--lince-card-solid) !important;
+  background-image: none !important;
+  color: var(--lince-ink-on-gold);
+  border: 1px solid rgba(65,28,41,.22);
+  box-shadow: 0 7px 21px rgba(38,8,20,.16);
+}
+.app-shell .foot-panel { border-left: 4px solid #9d253c; }
+@media (hover:hover) and (pointer:fine) {
+  #view-dashboard .stat-card:hover {
+    border-color: #a47862;
+    box-shadow: 0 12px 25px rgba(40,8,21,.24);
+  }
+}
+.app-shell .stat-icon,
+.app-shell .stat-icon.blue,
+.app-shell .stat-icon.cyan,
+.app-shell .stat-icon.orange,
+.app-shell .stat-icon.green {
+  background: #d0a76b !important;
+  color: var(--lince-ink-on-gold) !important;
+}
+.app-shell .occupancy-ring::before { background: var(--lince-card-solid); }
+.app-shell th,
+.app-shell td,
+.app-shell tr:nth-child(even) td { background: var(--lince-card-solid); }
+.app-shell tr:hover td { background: #d0a76b; }
+.app-shell input,
+.app-shell select,
+.app-shell textarea,
+.app-shell .code-tiles,
+.app-shell .kiosk-art,
+.app-shell .mode-pill,
+.app-shell .setting-notice,
+.app-shell .scan-result,
+.app-shell .visitor-result,
+.app-shell .result-idle {
+  background-color: var(--lince-card-solid);
+  background-image: none;
+}
+.app-shell .btn-outline,
+.app-shell .btn-light {
+  background: #d0a76b;
+  background-image: none;
+  border-color: #af825c;
+  color: var(--lince-ink-on-gold);
+}
+.app-shell .btn-outline:hover,
+.app-shell .btn-light:hover { background: var(--lince-card-solid); }
+.app-shell .table-panel,
+.app-shell .table-tools,
+.app-shell .table-overflow { background-color: var(--lince-card-solid); }
+
+/* El encabezado y pie quedan SOBRE el fondo oscuro, por eso necesitan un
+   tono claro; los textos dentro de las tarjetas mantienen tinta oscura. */
+.app-shell .view-header h2,
+.app-shell .view-header h3,
+#view-dashboard .welcome-strip h2 { color: var(--lince-text-on-guinda); }
+.app-shell .view-header p,
+#view-dashboard .welcome-strip p { color: #e1c4ac; }
+.app-shell .footer,
+.app-shell .footer span { color: var(--lince-text-on-guinda); }
+.app-shell .footer { border-top-color: rgba(223,195,151,.29); }
+#view-dashboard .welcome-strip h2::before { background: var(--lince-card-solid); }
+
+/* Etiquetas de acceso, métricas y estado mantienen sus colores semánticos. */
+#view-dashboard .stat-number.count-tweening::after { color: var(--lince-ink-on-gold); }
+.app-shell .panel h2,
+.app-shell .panel h3,
+.app-shell .panel h4,
+.app-shell .stat-number,
+.app-shell .stat-label { color: var(--lince-ink-on-gold); }
+
+/* Móvil: mismo esquema, sin restaurar la barra superior blanca. */
+@media (max-width:740px) {
+  .app-shell .main-shell {
+    background: var(--lince-background-solid) !important;
+    background-image: none !important;
+  }
+  .app-shell .mobile-menu-floating {
+    background: var(--lince-card-solid);
+    color: var(--lince-sidebar-solid);
+    border-color: #b08a63;
+  }
+}
+
+/* Modal: coherente con las tarjetas; se mantienen los avisos de seguridad. */
+#personDialog {
+  background: var(--lince-card-solid);
+  background-image: none;
+  color: var(--lince-ink-on-gold);
+}
+#personDialog .modal-form input,
+#personDialog .modal-form select { background: #d0a76b; }

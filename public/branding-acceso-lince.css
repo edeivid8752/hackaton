@@ -1,0 +1,34 @@
+/* Acceso Lince · Únicamente identidad visual. No altera datos, animaciones ni navegación. */
+/* Conservamos el logo UAdeO íntegro, incluida su palabra institucional, sin recolorearlo. */
+.app-shell .sidebar .brand { gap: 12px; overflow: visible; align-items: center; }
+.app-shell .sidebar .brand-icon.uadeo-brand-logo,
+.app-shell.sidebar-collapsed .sidebar .brand-icon.uadeo-brand-logo,
+.login-art .brand .brand-icon.uadeo-brand-logo {
+  width: 78px;
+  height: 78px;
+  flex: 0 0 78px;
+  border-radius: 14px;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  background: #DFC397 !important;
+  box-shadow: none;
+  overflow: hidden;
+}
+.app-shell .sidebar .brand-icon.uadeo-brand-logo img,
+.login-art .brand .brand-icon.uadeo-brand-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.app-shell .sidebar .brand-name { white-space: normal; font-size: 17px; letter-spacing: -.015em; }
+.app-shell .sidebar .brand-name small { font-size: 10px; }
+.app-shell .sidebar .side-top,
+.app-shell.sidebar-collapsed .side-top { min-height: 122px; padding: 18px 16px; }
+.login-art .brand.mark-big { gap: 16px; font-size: 26px; letter-spacing: -.03em; }
+@media (max-width: 740px) {
+  .app-shell .sidebar .brand-icon.uadeo-brand-logo { width: 72px; height: 72px; flex-basis: 72px; }
+  .app-shell .sidebar .side-top { min-height: 116px; }
+  .app-shell .sidebar .brand-name { font-size: 16px; }
+}

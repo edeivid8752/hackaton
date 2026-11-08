@@ -1,0 +1,99 @@
+/* LINCE ADMIN V0.2 - sidebar auto-replegable por hover, SOLO presentación. */
+/* Se carga DESPUÉS de styles.css y reference-theme.css. */
+@media (min-width: 741px) and (hover: hover) and (pointer: fine) {
+  .app-shell, .app-shell.sidebar-collapsed, .app-shell.sidebar-hover-open {
+    --sidebar-size: 0px;
+  }
+  .app-shell .main-shell,
+  .app-shell.sidebar-collapsed .main-shell {
+    margin-left: 0 !important;
+    transition: none;
+    width: 100%;
+    min-width: 0;
+  }
+  .app-shell .sidebar,
+  .app-shell.sidebar-collapsed .sidebar {
+    width: 258px !important;
+    transform: translate3d(-105%, 0, 0) !important;
+    visibility: hidden;
+    pointer-events: none;
+    box-shadow: 8px 0 32px rgba(5, 31, 52, .2);
+    transition: transform .29s cubic-bezier(.22, .8, .3, 1), visibility 0s linear .29s !important;
+    z-index: 35;
+  }
+  .app-shell.sidebar-hover-open .sidebar,
+  .app-shell.sidebar-hover-open.sidebar-collapsed .sidebar {
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform .29s cubic-bezier(.22, .8, .3, 1), visibility 0s !important;
+  }
+  /* Si el usuario guardó un estado anterior, no queremos el formato de iconos. */
+  .app-shell.sidebar-collapsed .side-top {min-height:110px;padding:24px 18px 18px;display:flex;align-items:center;justify-content:center;}
+  .app-shell.sidebar-collapsed .sidebar .brand {justify-content:flex-start;gap:12px;}
+  .app-shell.sidebar-collapsed .sidebar .brand-icon {width:48px;height:48px;}
+  .app-shell.sidebar-collapsed .sidebar .brand-name,
+  .app-shell.sidebar-collapsed .nav-label,
+  .app-shell.sidebar-collapsed .nav-text,
+  .app-shell.sidebar-collapsed .campus-box {display:initial;}
+  .app-shell.sidebar-collapsed .sidebar nav {padding:0 12px;gap:9px;}
+  .app-shell.sidebar-collapsed .nav-item {justify-content:flex-start;min-height:50px;padding:0 15px;gap:14px;}
+  .app-shell.sidebar-collapsed .sidebar-bottom {padding-bottom:70px;}
+  .app-shell.sidebar-collapsed .sidebar-user {padding:21px 17px;display:flex;justify-content:flex-start;}
+  .app-shell.sidebar-collapsed .sidebar-user>.sidebar-avatar,
+  .app-shell.sidebar-collapsed .sidebar-user>div:not(.sidebar-avatar) {display:block;}
+  .app-shell.sidebar-collapsed .logout-side {margin-left:auto;}
+
+  /* Área sensible de 20 px, transparente. No queda una franja azul visible. */
+  #sidebarCollapseToggle.sidebar-hover-trigger {
+    display:block;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:auto;
+    width:20px;
+    height:100vh;
+    min-height:100vh;
+    border:0;
+    border-radius:0;
+    margin:0;
+    padding:0;
+    box-shadow:none;
+    background:transparent;
+    color:#0b7184;
+    transform:none;
+    z-index:36;
+    cursor:pointer;
+    transition:none;
+  }
+  #sidebarCollapseToggle.sidebar-hover-trigger svg {opacity:0;}
+  #sidebarCollapseToggle.sidebar-hover-trigger::after {
+    content:"";
+    position:absolute;
+    left:0;
+    top:calc(50% - 32px);
+    height:64px;
+    width:3px;
+    border-radius:0 5px 5px 0;
+    background:#10aaa6;
+    opacity:.38;
+    transition:opacity .18s, width .18s;
+  }
+  #sidebarCollapseToggle.sidebar-hover-trigger:hover::after,
+  #sidebarCollapseToggle.sidebar-hover-trigger:focus-visible::after {opacity:1;width:5px;}
+  .app-shell.sidebar-hover-open #sidebarCollapseToggle.sidebar-hover-trigger {
+    z-index:36;
+    pointer-events:auto;
+  }
+  .app-shell.sidebar-hover-open #sidebarCollapseToggle.sidebar-hover-trigger::after {opacity:0;}
+  #sidebarCollapseToggle.sidebar-hover-trigger:focus-visible {
+    outline:3px solid #0d9694;
+    outline-offset:-3px;
+  }
+  .sidebar .nav-item:focus-visible {outline:2px solid #39ccbe;outline-offset:2px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-shell .sidebar, .app-shell.sidebar-collapsed .sidebar,
+  #sidebarCollapseToggle.sidebar-hover-trigger::after {transition:none !important;}
+}

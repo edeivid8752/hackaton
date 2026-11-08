@@ -1,0 +1,39 @@
+======================================================
+ LINCE ACCESS V0.2 — ADMIN (PC) + GUARD (ANDROID)
+======================================================
+
+1. Descomprime toda la carpeta ZIP en Windows.
+2. Instala Node.js 22.13 o superior, si todavía no lo hiciste.
+3. Cierra cualquier servidor anterior de LINCE ACCESS V0.1.
+4. Ejecuta: iniciar-lince.bat
+5. En tu laptop abre: http://localhost:3000/
+6. En tu Android conectado a la MISMA Wi-Fi, abre la URL
+   ANDROID que sale en la ventana del servidor.
+   Ejemplo: http://192.168.1.25:3000/guard.html
+   OJO: esa IP es ficticia; usa la que imprime TU laptop.
+
+USUARIOS DE PRUEBA
+- Guardia Android: guardia / Guardia123!
+- Administración: admin / Admin123!
+- Dirección: direccion / Direccion123!
+
+PRIMERA PRUEBA
+- Laptop: entra con admin y deja el dashboard abierto.
+- Android: entra con guardia, abre "Ingresar código manualmente"
+  y valida LIN-1001. Mira si el aforo aumenta en ambos equipos.
+- Repite antes de 12 segundos: debe indicar ESCANEO REPETIDO.
+- LIN-9001 debe mostrar ACCESO DENEGADO.
+
+PARA USAR LA CAMARA DE TU ANDROID:
+- Usa el botón naranja "TOMAR FOTO DEL QR".
+- Abre los QR de prueba en la laptop:
+  http://localhost:3000/credenciales.html
+- Para fotografiar QR sin conexión a Internet, ejecuta una vez
+  preparar-lector-qr-offline.bat con Internet en Windows.
+- El botón de escaneo de VIDEO EN VIVO requiere HTTPS, que se
+  implementará en otra versión; por HTTP local no está disponible.
+
+Este es un prototipo educativo con datos ficticios.
+NO utilizar con datos de estudiantes reales o en redes públicas.
+
+Manual completo: README.md
