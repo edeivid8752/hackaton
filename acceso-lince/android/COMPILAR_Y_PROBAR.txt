@@ -1,0 +1,19 @@
+ACCESO LINCE VIGILANCIA · V0.5.0
+===================================
+
+Compilar en GitHub (recomendado)
+1. Sube ACCESO_LINCE_VIGILANCIA_ANDROID_V0_5_FUENTE.zip SIN descomprimir a
+   https://github.com/JREP4114/APP-android/upload/main
+2. Espera a que se ejecute «ACCESO LINCE VIGILANCIA - Compilar APK».
+3. En https://github.com/JREP4114/APP-android/actions abre la ejecución nueva.
+4. Descarga el artefacto ACCESO_LINCE_VIGILANCIA_APK; dentro está el APK.
+
+Esta carpeta contiene FUENTE, no un APK ya compilado. El APK se obtiene
+cuando GitHub Actions completa la tarea «assembleDebug» correctamente.
+No hace falta Android Studio para compilar mediante GitHub Actions.
+
+Si Windows tiene Android SDK 35 instalado, también se puede ejecutar
+COMPILAR_APK_WINDOWS.bat.
+
+NUNCA usar documentos reales ni credenciales reales en modo HTTP de pruebas.
+La lectura de QR sin PIN es rápida pero no impide copia del gafete.

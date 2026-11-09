@@ -1,0 +1,11 @@
+LINCE GUARD Android V0.4 - SIGUIENTE ETAPA
+
+1. Ejecuta INICIAR_ACCESO_LINCE.bat en el equipo servidor.
+2. Inicia sesion como Direccion y crea un guardia nuevo.
+3. Vincula cada dispositivo Android desde la seccion Dispositivos Android.
+4. El proyecto Android V0.4 esta en ANDROID/LINCE_GUARD_ANDROID.
+   REQUIERE COMPILACION; NO ES UN APK YA INSTALABLE.
+5. Configura la IP privada real del servidor dentro del Android.
+6. El QR del guardia se usa para ingresar en Android una vez que el equipo esta vinculado.
+
+Usa solamente datos ficticios hasta revisar HTTPS, privacidad y seguridad.

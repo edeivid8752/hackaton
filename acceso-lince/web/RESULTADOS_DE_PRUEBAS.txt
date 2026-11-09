@@ -1,0 +1,20 @@
+LINCE ACCESS V0.5 — PRUEBAS DE INTEGRACIÓN
+
+Ejecutar: npm test
+
+- 22 comprobaciones: integración histórica del servidor.
+- 17 comprobaciones: compatibilidad V0.2.
+- 11 comprobaciones: escaneo continuo y rearme.
+- 10 comprobaciones: ADMIN -> GUARD -> aforo.
+- 40 comprobaciones: regresión web ADMIN V0.4.
+- 61 comprobaciones: V0.5 cuentas, roles, QR, Android,
+  historial privado, cierre sin salidas falsas, correcciones,
+  eventos especiales y 500 alumnos CSV + Excel real.
+
+TOTAL: 161 comprobaciones de regresión + V0.5, más pruebas de base limpia.
+También se ejecutaron 26 pruebas Java de ScanGate/ScanQueue sin recompilar el APK.
+Se verificó QR SVG con OpenCV y ZIP de 500 códigos con zipfile.
+
+
+El navegador real en Windows y el Android físico requieren
+prueba del usuario; no afirmamos validación visual total.

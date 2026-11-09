@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#481d2b" />
+<title>ACCESO LINCE · Campus integrado</title>
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/reference-theme.css" />
+ <link rel="stylesheet" href="/sidebar-hover.css" />
+<link rel="stylesheet" href="/admin-motion.css" />
+<link rel="stylesheet" href="/uadeo-colors.css" />
+<link rel="stylesheet" href="/uadeo-background.css" />
+<link rel="stylesheet" href="/uadeo-gold-theme.css" />
+<link rel="stylesheet" href="/uadeo-solid-palette.css" />
+<link rel="stylesheet" href="/appearance-themes.css" />
+<link rel="stylesheet" href="/branding-acceso-lince.css" />
+<link rel="stylesheet" href="/admin-v04.css" />
+<link rel="stylesheet" href="/v05.css" />
+<link rel="stylesheet" href="/guard-shifts.css" />
+<link rel="stylesheet" href="/guard-operations.css" />
+<link rel="stylesheet" href="/login-institucional.css" />
+<link rel="icon" href="/assets/uadeo-favicon.png" type="image/png" />
+</head>
+<body>
+<div id="loginScreen" class="login-shell">
+ <div class="login-art">
+  <div class="brand mark-big"><span class="brand-icon uadeo-brand-logo"><img src="/assets/uadeo-logo.png" alt="Logotipo de la Universidad Autónoma de Occidente" /></span><span>ACCESO LINCE</span></div>
+  <div class="login-hero"><span class="eyebrow accent">PLATAFORMA INSTITUCIONAL</span><h1>Un campus más seguro comienza con cada acceso.</h1><p>Monitoreo del campus, gestión de estudiantes y reportes en tiempo real. La validación de accesos se realiza desde LINCE GUARD Android.</p><div class="hero-grid"><div><b>01</b><span>Control de accesos</span></div><div><b>02</b><span>Aforo en vivo</span></div><div><b>03</b><span>Gestión institucional</span></div></div></div>
+  <div class="art-footer">PROTOTIPO ACADÉMICO · DATOS FICTICIOS</div>
+ </div>
+ <div class="login-form-side">
+  <form class="login-card" id="loginForm">
+   <div class="mobile-brand">ACCESO LINCE</div>
+   <div class="login-badge"><span class="live-dot"></span> Sistema listo para operar</div>
+   <h2>Bienvenido a ACCESO LINCE</h2><p class="muted">Acceso institucional: Dirección, Administración y estudiantes.</p>
+   <label>Matrícula o identificador<input id="loginUser" required autocomplete="username" placeholder="Matrícula o identificador institucional" /></label>
+   <label>Contraseña<div class="input-wrap"><input id="loginPassword" type="password" required autocomplete="current-password" placeholder="Tu contraseña"/><button type="button" class="show-password" id="showPassword" aria-label="Mostrar contraseña">◉</button></div></label>
+   <div id="loginError" class="form-error hidden"></div>
+   <button class="btn btn-primary full" type="submit">Ingresar al sistema <span>→</span></button>
+   <p class="v05-demo-warning">Ingresa con la identificación institucional y contraseña asignadas por Dirección.</p>
+   <div class="login-note"><span>ⓘ</span> Versión de evaluación local. No registrar datos personales reales sin autorización y protección adecuada.</div></form>
+ </div>
+</div>
+<div id="appScreen" class="app-shell hidden">
+ <button type="button" id="sidebarCollapseToggle" class="sidebar-collapse-btn sidebar-hover-trigger" aria-label="Mostrar menú lateral" title="Acerca el cursor aquí para abrir el menú" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></button>
+ <aside class="sidebar" id="sidebar">
+  <div class="side-top"><div class="brand"><span class="brand-icon uadeo-brand-logo"><img src="/assets/uadeo-logo.png" alt="Logotipo de la Universidad Autónoma de Occidente" /></span><span class="brand-name">ACCESO LINCE<small>Plataforma institucional</small></span></div><span class="side-version">V0.5.2 · LOCAL</span></div>
+  <div class="nav-label">MENÚ PRINCIPAL</div>
+  <nav id="sideNav" aria-label="Navegación principal">
+   <button class="nav-item active" data-view="dashboard" aria-label="Panel de control" title="Panel de control"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.3"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.3"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.3"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.3"/></svg></span> <span class="nav-text">Panel de control</span></button>
+   <button class="nav-item" data-view="visitors" aria-label="Visitantes" title="Visitantes"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M18 8a3 3 0 0 1 0 6M18 16a5 5 0 0 1 3 4"/></svg></span> <span class="nav-text">Visitantes</span></button>
+   <button class="nav-item" data-view="people" aria-label="Comunidad" title="Comunidad"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="18" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M16 16a5 5 0 0 1 5 4"/></svg></span> <span class="nav-text">Comunidad</span></button>
+   <button class="nav-item" data-view="history" aria-label="Historial" title="Historial"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span> <span class="nav-text">Historial</span></button>
+   <button class="nav-item" data-view="reports" aria-label="Reportes" title="Reportes"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20V8"/><path d="M2 20h22"/></svg></span> <span class="nav-text">Reportes</span></button>
+   <button class="nav-item" data-view="settings" aria-label="Configuración" title="Configuración"><span><svg class="side-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4l.6 2.2 2 .9 2-.9 2.2 3.8-1.7 1.6.1 2.5 1.6 1.6-2.1 3.8-2.2-.7-2 .9L14 21h-4l-.6-2.2-2-.9-2.1.8-2.1-3.8 1.6-1.6-.1-2.5-1.6-1.6 2.2-3.8 2.1.8 2-.9z"/><circle cx="12" cy="12" r="2.7"/></svg></span> <span class="nav-text">Configuración</span></button>
+   <button class="nav-item" data-view="profile" aria-label="Mi credencial" title="Mi credencial"><span class="v05-menu-icon">▣</span> <span class="nav-text">Mi credencial</span></button>
+   <button class="nav-item" data-view="student" aria-label="Mi espacio" title="Mi espacio"><span class="v05-menu-icon">🎓</span> <span class="nav-text">Mi espacio</span></button>
+   <button class="nav-item" data-view="accounts" aria-label="Gestión de cuentas" title="Gestión de cuentas"><span class="v05-menu-icon">♙</span> <span class="nav-text">Gestión de cuentas</span></button>
+   <button class="nav-item" data-view="import" aria-label="Importar Excel" title="Importar Excel"><span class="v05-menu-icon">▤</span> <span class="nav-text">Importar Excel</span></button>
+   <button class="nav-item" data-view="events" aria-label="Eventos especiales" title="Eventos especiales"><span class="v05-menu-icon">◷</span> <span class="nav-text">Eventos especiales</span></button>
+   <button class="nav-item" data-view="shifts" aria-label="Turnos y relevos de seguridad" title="Turnos y relevos"><span class="v05-menu-icon">◴</span> <span class="nav-text">Turnos y relevos</span></button>
+   <button class="nav-item" data-view="devices" aria-label="Dispositivos Android" title="Dispositivos autorizados"><span class="v05-menu-icon">▣</span> <span class="nav-text">Dispositivos Android</span></button>
+   <button class="nav-item" data-view="express" aria-label="Ingresos exprés" title="Ingresos exprés"><span class="v05-menu-icon">◉</span> <span class="nav-text">Ingresos exprés</span></button>
+  </nav>
+  <div class="sidebar-bottom"><div class="campus-box"><span class="campus-pulse"></span><div><strong>Campus Mazatlán</strong><small>Sistema local operativo</small></div></div><div class="sidebar-user"><div class="sidebar-avatar">LA</div><div><strong id="sideUsername">Usuario</strong><small id="sideRole">Operador</small></div><button class="logout-side v05-logout" id="logoutBtn" title="Cerrar sesión" aria-label="Cerrar sesión"><span aria-hidden="true">⏻</span><span class="logout-label">Cerrar sesión</span></button></div></div>
+ </aside>
+ <div class="main-shell">
+  <!-- Barra superior eliminada. Se conservan los IDs ocultos que usa app.js,
+       sin modificar su lógica de navegación, reloj o sesión. -->
+  <div class="admin-internal-meta hidden" aria-hidden="true"><span id="breadcrumb"></span><span id="pageTitle"></span><span id="clock"></span><span id="topAvatar"></span></div>
+  <!-- En teléfonos, acceso visible al menú sin recuperar la antigua barra blanca. -->
+  <button type="button" class="mobile-menu mobile-menu-floating" id="menuToggle" aria-label="Abrir menú">☰</button>
+  <main class="main-content">
+   <section class="view" id="view-dashboard">
+    <div class="welcome-strip"><div><h2>Panel de control</h2><p>Resumen de accesos y ocupación del campus</p></div><div class="welcome-icon">◈</div></div>
+    <div class="view-header"><div><h3>Resumen de ocupación</h3><p>Personas registradas actualmente dentro del campus.</p></div><button class="btn btn-outline" id="refreshBtn">↻ Actualizar</button></div>
+    <div class="stat-grid">
+     <article class="stat-card"><div class="stat-top"><span class="stat-label">AFORO ACTUAL</span><span class="stat-icon blue">◫</span></div><div class="occupancy-figure"><div class="occupancy-count"><strong class="stat-number" id="statTotal">0</strong><span class="stat-suffix"> personas</span></div><div class="occupancy-ring" id="occupancyRing" style="--occupied:0" aria-label="Aforo del campus"><span id="occupancyPercent">0%</span></div></div><div class="stat-bottom"><span class="stat-tag blue-tag">EN EL CAMPUS</span><span id="statCapacity">de 500 plazas</span></div></article>
+     <article class="stat-card"><div class="stat-top"><span class="stat-label">ESTUDIANTES</span><span class="stat-icon cyan">♧</span></div><div><strong class="stat-number" id="statStudents">0</strong><span class="stat-suffix"> alumnos</span></div><div class="stat-bottom"><span class="stat-tag cyan-tag">REGISTRADOS</span><span>Entrada confirmada</span></div></article>
+     <article class="stat-card"><div class="stat-top"><span class="stat-label">PERSONAL UAdeO</span><span class="stat-icon orange">◉</span></div><div><strong class="stat-number" id="statStaff">0</strong><span class="stat-suffix"> miembros</span></div><div class="stat-bottom"><span class="stat-tag orange-tag">DOCENTES / ADMIN.</span></div></article>
+     <article class="stat-card"><div class="stat-top"><span class="stat-label">PERSONAS EXTERNAS</span><span class="stat-icon green">↗</span></div><div><strong class="stat-number" id="statVisitors">0</strong><span class="stat-suffix"> visitantes</span></div><div class="stat-bottom"><span class="stat-tag green-tag">INVITADOS / PROVEEDORES</span></div></article>
+    </div>
+    <div class="two-col dashboard-cols">
+     <article class="panel"><div class="panel-heading"><div><h3>Aforo por carrera</h3><p>Alumnos presentes, agrupados por programa</p></div><span class="panel-kicker">EN VIVO <i class="live-dot"></i></span></div><div id="careerBars" class="bars-container empty-chart"><span>Aún no hay registros de entrada.</span></div></article>
+     <article class="panel"><div class="panel-heading"><div><h3>Actividad reciente</h3><p>Últimos movimientos registrados</p></div><span class="mini-clock">↻ Automático</span></div><div id="recentActivity" class="activity-list"><div class="empty-state">Sin movimientos registrados todavía.</div></div></article>
+    </div>
+    <div class="panel foot-panel"><div><span class="eyebrow">OPERACIÓN INTEGRADA</span><h3>LINCE GUARD + LINCE ADMIN</h3><p>El acceso se valida desde Android. Aquí puedes monitorear el aforo y consultar los movimientos registrados en el mismo servidor.</p><div class="admin-sync-line"><span class="admin-sync-dot" id="syncDot"></span><span id="syncStatus" role="status">Comprobando conexión en vivo…</span></div></div><button class="btn btn-orange" data-goto="history">Ver historial →</button></div>
+   </section>
+   <section class="view hidden" id="view-visitors"><div class="view-header"><div><span class="eyebrow blue-text">ACCESOS EXTERNOS</span><h3>Registro de visitantes</h3><p>Alta temporal de invitados y proveedores sin credencial institucional.</p></div><span class="mode-pill">REGISTRO ASISTIDO</span></div><div class="two-col visitor-grid"><form class="panel detailed-form" id="visitorForm"><h3>Registrar persona externa</h3><p>El guardia verificará la identidad antes de autorizar el ingreso.</p><label>Nombre completo<input name="name" required minlength="3" placeholder="Nombre y apellidos" /></label><div class="form-grid"><label>Tipo<select name="type"><option value="visitante">Visitante / invitado</option><option value="proveedor">Proveedor</option></select></label><label>Autorización (horas)<select name="hours"><option value="2">2 horas</option><option value="4">4 horas</option><option value="8" selected>8 horas</option><option value="24">24 horas</option></select></label></div><label>Motivo de visita<input name="reason" required minlength="3" placeholder="Ej. Mantenimiento de aires"/></label><label>Persona o área que recibe<input name="host_name" required minlength="3" placeholder="Ej. Coordinación académica"/></label><button type="submit" class="btn btn-primary full">Crear autorización temporal →</button></form><div class="panel visitor-result"><span class="eyebrow blue-text">CREDENCIAL TEMPORAL</span><div id="visitorGenerated"><div class="visitor-icon">♧</div><h3>Esperando registro</h3><p>Cuando registres una persona, su código temporal aparecerá aquí.</p></div></div></div>
+    <div class="panel table-panel admin-visitor-table"><div class="table-tools"><div><h3>Autorizaciones recientes</h3><p>Códigos temporales, vigencia y estado de presencia compartidos con LINCE GUARD.</p></div><button class="btn btn-outline" id="visitorsRefresh" type="button">↻ Actualizar</button></div><div class="table-overflow"><table><thead><tr><th>VISITANTE / PROVEEDOR</th><th>CÓDIGO</th><th>RESPONSABLE / MOTIVO</th><th>VENCE</th><th>ESTADO</th><th>QR</th></tr></thead><tbody id="visitorsTable"><tr><td colspan="6" class="table-empty">Cargando autorizaciones…</td></tr></tbody></table></div></div>
+   </section>
+   <section class="view hidden" id="view-people"><div class="view-header"><div><span class="eyebrow blue-text">GESTIÓN INSTITUCIONAL</span><h3>Comunidad universitaria</h3><p>Catálogo de alumnos, docentes y personal administrativo. Los QR se generan automáticamente.</p></div><button id="addPersonBtn" class="btn btn-orange">+ Nuevo usuario</button></div><div class="panel table-panel"><div class="table-tools"><div><h3>Directorio de usuarios</h3><p>Altas y consulta compartidas con LINCE GUARD Android.</p></div><input id="peopleSearch" placeholder="⌕ Buscar por nombre o credencial"/></div><div class="table-overflow"><table><thead><tr><th>USUARIO</th><th>CREDENCIAL</th><th>CATEGORÍA</th><th>CARRERA / GRUPO</th><th>ESTADO</th><th>PRESENCIA</th><th id="peopleActionsHead">GESTIÓN</th></tr></thead><tbody id="peopleTable"></tbody></table></div></div></section>
+   <section class="view hidden" id="view-history"><div class="view-header"><div><span class="eyebrow blue-text">AUDITORÍA DE MOVIMIENTOS</span><h3>Historial de accesos</h3><p>Registro cronológico inmutable. Las correcciones se anexan como nuevos movimientos auditados.</p></div><div class="v05-header-actions"><button class="btn btn-outline" id="historyBack">← Volver al panel</button><button class="btn btn-outline" id="historyRefresh">↻ Actualizar</button></div></div><div class="panel table-panel"><div class="table-tools"><div><h3>Últimos movimientos</h3><p>Entradas, salidas y cierres automáticos.</p></div><span class="mode-pill">ÚLTIMOS 250 MOVIMIENTOS</span></div>
+      <div class="admin-filter-bar"><label>Buscar<input id="historySearch" placeholder="Nombre, código u operador" autocomplete="off" /></label><label>Movimiento<select id="historyAction"><option value="">Todos</option><option value="entrada">Entradas</option><option value="salida">Salidas</option><option value="salida_automatica">Cierres automáticos</option></select></label><label>Fecha<input id="historyDate" type="date" /></label><button class="btn btn-outline" id="historyClear" type="button">Limpiar</button><button class="btn btn-orange" id="exportHistory" type="button">↓ Exportar CSV</button></div>
+      <div class="admin-results-count" id="historyCount" aria-live="polite">—</div>
+      <div class="table-overflow"><table><thead><tr><th>FECHA / HORA</th><th>PERSONA</th><th>CÓDIGO</th><th>TIPO</th><th>OPERADOR</th></tr></thead><tbody id="historyTable"></tbody></table></div></div></section>
+   <section class="view hidden" id="view-reports"><div class="view-header"><div><span class="eyebrow blue-text">INTELIGENCIA OPERATIVA</span><h3>Reportes institucionales</h3><p>Indicadores en vivo y exportación de movimientos para administración y dirección.</p></div><button class="btn btn-outline" id="reportsRefresh" type="button">↻ Actualizar</button></div>
+      <div class="stat-grid admin-reports-grid">
+       <article class="stat-card"><div class="stat-top"><span class="stat-label">INGRESOS DE HOY</span><span class="stat-icon cyan">↙</span></div><strong class="stat-number" id="reportToday">0</strong><div class="stat-bottom">Entradas verificadas por seguridad</div></article>
+       <article class="stat-card"><div class="stat-top"><span class="stat-label">AFORO ACTUAL</span><span class="stat-icon blue">◫</span></div><strong class="stat-number" id="reportInside">0</strong><div class="stat-bottom">Personas actualmente dentro</div></article>
+       <article class="stat-card"><div class="stat-top"><span class="stat-label">OCUPACIÓN</span><span class="stat-icon orange">%</span></div><strong class="stat-number" id="reportPct">0%</strong><div class="stat-bottom">Frente a la capacidad autorizada</div></article>
+      </div>
+      <div class="two-col dashboard-cols">
+       <article class="panel"><div class="panel-heading"><div><h3>Alumnos por carrera</h3><p>Presencia actual, no matrícula total</p></div><span class="panel-kicker">EN VIVO <i class="live-dot"></i></span></div><div id="reportCareers" class="bars-container empty-chart"><span>Sin datos</span></div></article>
+       <article class="panel"><div class="panel-heading"><div><h3>Alumnos por grupo</h3><p>Presencia actual por grupo</p></div><span class="panel-kicker">EN VIVO <i class="live-dot"></i></span></div><div id="reportGroups" class="bars-container empty-chart"><span>Sin datos</span></div></article>
+      </div>
+      <div class="panel admin-export-panel"><div><span class="eyebrow">AUDITORÍA</span><h3>Descargar movimientos</h3><p>Exporta los últimos 250 registros disponibles. Para exportaciones de mayor alcance implementaremos el módulo de informes históricos por fechas.</p></div><button class="btn btn-orange" id="reportsExport" type="button">↓ Descargar CSV</button></div>
+     </section>
+   <section class="view hidden" id="view-accounts">
+ <div class="view-header"><div><span class="eyebrow blue-text">CUENTAS INSTITUCIONALES</span><h3>Gestión de administradores y guardias</h3><p>Dirección crea administradores. Dirección y Administración crean guardias para la aplicación Android.</p></div></div>
+ <div class="two-col"><form id="accountCreate" class="panel detailed-form"><h3>Alta institucional</h3><label>Tipo de cuenta<select name="role" id="accountRole"><option value="guardia">Guardia</option><option value="admin">Administrador</option></select></label><label>Nombre completo<input name="name" required minlength="3" placeholder="Nombre y apellidos"/></label><label>Identificación institucional<input name="institutional_id" required minlength="4" placeholder="SEG-001 o ADM-002"/></label><button class="btn btn-primary full" type="submit">Crear cuenta + QR →</button><p class="v05-note">La contraseña inicial se mostrará una sola vez tras el registro.</p></form><div class="panel"><h3>Cuentas existentes</h3><div class="table-overflow"><table><thead><tr><th>PERSONA</th><th>ROL</th><th>ESTADO</th><th>GESTIÓN</th></tr></thead><tbody id="accountsTable"><tr><td colspan="4">Abre esta sección para cargar las cuentas.</td></tr></tbody></table></div></div></div>
+ </section>
+ <section class="view hidden" id="view-shifts">
+  <div class="view-header"><div><span class="eyebrow blue-text">CONTROL DE PERSONAL DE SEGURIDAD</span><h3>Turnos y relevos</h3><p>Dirección y Administración programan turnos y supervisan guardias asignados, servicios iniciados y relevos pendientes.</p></div><button type="button" id="shiftsRefresh" class="btn btn-outline">↻ Actualizar</button></div>
+  <div class="shift-stat-grid">
+    <article class="panel shift-stat"><span>EN SERVICIO</span><strong id="shiftInService">0</strong><small>Turnos confirmados por guardias</small></article>
+    <article class="panel shift-stat"><span>RELEVO PENDIENTE</span><strong id="shiftPending">0</strong><small>Turnos sin iniciar desde su horario</small></article>
+    <article class="panel shift-stat"><span>SIN COBERTURA</span><strong id="shiftUncovered">0</strong><small>Turnos vencidos sin inicio</small></article>
+    <article class="panel shift-stat"><span>ENTREGAS PENDIENTES</span><strong id="shiftHandovers">0</strong><small>Ofertas de relevo sin aceptar</small></article>
+  </div>
+  <div class="two-col shift-cols">
+   <form id="shiftCreate" class="panel detailed-form">
+    <h3>Programar turno de guardia</h3>
+    <label>Guardia autorizado<select name="guard_account_id" id="shiftGuard" required><option value="">Cargando guardias…</option></select></label>
+    <label>Ubicación / puesto<input name="location" placeholder="Acceso principal" maxlength="90" value="Acceso principal" required/></label>
+    <div class="form-grid"><label>Inicia<input name="starts_at" id="shiftStart" type="datetime-local" required/></label><label>Termina<input name="ends_at" id="shiftEnd" type="datetime-local" required/></label></div>
+    <button type="submit" class="btn btn-primary full">+ Programar turno</button>
+    <p class="v05-note">Se admiten turnos nocturnos y jornadas de hasta 36 horas. Programar no equivale a confirmar presencia ni entrega del puesto.</p>
+   </form>
+   <div class="panel shift-info">
+    <h3>Cómo se confirman los relevos</h3>
+    <p>El turno lo inicia y termina el guardia desde su propia sesión Android. Para un relevo formal, el saliente ofrece la entrega y el entrante la acepta: ambos movimientos quedan auditados.</p>
+    <p><strong>Estado de integración:</strong> esta actualización activa la programación y el seguimiento web; los botones de inicio, entrega y recepción se incorporarán a la próxima versión Android.</p>
+    <p><strong>Importante:</strong> escanear el QR para entrar al campus y comenzar un turno de trabajo son operaciones diferentes.</p>
+   </div>
+  </div>
+  <div class="panel table-panel"><div class="table-tools"><div><h3>Turnos registrados</h3><p>Se conservan los horarios, el estado de la cuenta y la auditoría. No se inventan entradas ni salidas.</p></div><span class="mode-pill">CONTROL DE RELEVOS</span></div>
+  <div id="shiftMessage" class="v05-note" role="status">Cargando turnos…</div>
+  <div class="table-overflow"><table><thead><tr><th>GUARDIA</th><th>HORARIO</th><th>PUESTO</th><th>ESTADO DE TURNO</th><th>ACCESO AL CAMPUS</th><th>GESTIÓN</th></tr></thead><tbody id="shiftsTable"><tr><td colspan="6">Abre esta sección para consultar turnos.</td></tr></tbody></table></div>
+  </div>
+  <div class="panel table-panel"><div class="table-tools"><div><h3>Entradas y salidas de guardias</h3><p>Movimientos físicos que LINCE GUARD registra al escanear sus QR. No equivalen automáticamente al inicio o fin del servicio.</p></div><span class="mode-pill">ÚLTIMOS 100</span></div><div class="table-overflow"><table><thead><tr><th>GUARDIA</th><th>FECHA / HORA</th><th>MOVIMIENTO</th><th>ACCESO</th><th>OPERADOR</th></tr></thead><tbody id="guardAccessTable"><tr><td colspan="5">Aún no hay movimientos de guardias registrados.</td></tr></tbody></table></div></div>
+  <div class="panel table-panel"><h3>Bitácora de relevos</h3><p class="v05-note">Ofertas de entrega y confirmaciones recibidas desde el personal de guardia.</p><div class="table-overflow"><table><thead><tr><th>ENTREGA</th><th>RECIBE</th><th>FECHA</th><th>ESTADO</th></tr></thead><tbody id="handoversTable"><tr><td colspan="4">Aún no hay relevos confirmados.</td></tr></tbody></table></div></div>
+ </section>
+
+ <section class="view hidden" id="view-devices">
+  <div class="view-header"><div><span class="eyebrow blue-text">LINCE GUARD · DISPOSITIVOS</span><h3>Androids autorizados</h3><p>Vincula varios teléfonos para operar simultáneamente. Solo Dirección y Administración pueden autorizar o revocar dispositivos.</p></div><button type="button" class="btn btn-outline" id="devicesRefresh">↻ Actualizar</button></div>
+  <div class="two-col shift-cols">
+   <form id="devicePairForm" class="panel detailed-form"><h3>Autorizar un Android</h3><p>Genera un código de un solo uso para vincular un móvil institucional a la próxima versión de LINCE GUARD.</p><label>Nombre del dispositivo<input name="name" required minlength="3" maxlength="70" placeholder="Tablet Acceso Principal 1" /></label><label>Ubicación / puerta<input name="gate" required minlength="3" maxlength="70" placeholder="Acceso principal" /></label><button type="submit" class="btn btn-primary full">+ Generar vinculación</button><p class="v05-note">El código vence en 10 minutos. Se mostrará una sola vez. La aplicación Android deberá guardar su llave privada localmente.</p></form>
+   <div class="panel shift-info"><h3>Vinculación de un solo uso</h3><div id="devicePairResult" class="device-pair-result" role="status">Genera un código para un Android y entrégalo únicamente al operador autorizado.</div><p class="v05-note">Sin PIN de guardia: gafete QR + Android vinculado. Una foto del QR en manos de alguien con acceso al equipo puede permitir suplantación: úsalo solo con personal autorizado y dispositivos controlados.</p></div>
+  </div>
+  <div class="panel table-panel"><div class="table-tools"><div><h3>Dispositivos registrados</h3><p>Las revocaciones bloquean de inmediato los accesos por gafete desde ese Android.</p></div><span class="mode-pill">MÚLTIPLES DISPOSITIVOS</span></div><div id="devicesMessage" class="v05-note">Sin consultar.</div><div class="table-overflow"><table><thead><tr><th>DISPOSITIVO</th><th>PUERTA</th><th>ÚLTIMA ACTIVIDAD</th><th>ESTADO</th><th>ACCIÓN</th></tr></thead><tbody id="devicesTable"><tr><td colspan="5">Sin consultar.</td></tr></tbody></table></div></div>
+ </section>
+ <section class="view hidden" id="view-express">
+  <div class="view-header"><div><span class="eyebrow blue-text">ACCESOS EXTERNOS · SUPERVISIÓN</span><h3>Ingresos exprés</h3><p>Historial de visitantes (INE) y proveedores (gafete) registrados desde LINCE GUARD.</p></div><button type="button" id="expressRefresh" class="btn btn-outline">↻ Actualizar</button></div>
+  <div class="panel shift-info"><h3>Registro exprés por fotografía</h3><p>El guardia fotografía el documento con la cámara del Android vinculado, confirma visualmente el documento y registra la entrada con un toque. No es reconocimiento de identidad automático ni incluye OCR todavía.</p><p><strong>Privacidad:</strong> las fotografías se cifran en el servidor y se eliminan después de 24 horas; se conserva la bitácora de entrada. Solo Dirección y Administración pueden consultar la fotografía temporalmente. No se debe utilizar con INE reales sin aviso de privacidad y autorización institucional.</p><p><strong>Para operar:</strong> la próxima versión Android utilizará <code>POST /api/express-entry</code> al confirmar la captura.</p></div>
+  <div class="panel table-panel"><div class="table-tools"><div><h3>Bitácora de capturas</h3><p>Tipo, hora, responsable y puerta; no se muestran datos de INE en tablas.</p></div><span class="mode-pill">SUPERVISIÓN</span></div><div id="expressMessage" class="v05-note">Sin consultar.</div><div class="table-overflow"><table><thead><tr><th>TIPO</th><th>FECHA</th><th>GUARDIA</th><th>ACCESO</th><th>PRESENCIA</th><th>DOCUMENTO</th></tr></thead><tbody id="expressTable"><tr><td colspan="6">Sin capturas.</td></tr></tbody></table></div></div>
+ </section>
+ <section class="view hidden" id="view-import"><div class="view-header"><div><span class="eyebrow blue-text">COMUNIDAD UNIVERSITARIA</span><h3>Importación masiva de estudiantes</h3><p>Importa CSV o Excel. Verifica duplicados antes de crear cuentas y códigos QR.</p></div></div><div class="panel detailed-form"><h3>Selecciona el archivo</h3><a class="btn btn-outline" href="/plantilla-estudiantes.csv" download>↓ Descargar plantilla CSV</a><form id="importForm" class="v05-import-form"><label>Archivo .xlsx / .csv<input id="importFile" type="file" accept=".xlsx,.csv" required/></label><button class="btn btn-primary" type="submit">Analizar archivo</button></form><div id="importSummary" class="v05-note" aria-live="polite">Ningún archivo analizado todavía.</div><div class="table-overflow"><table><thead><tr><th>FILA</th><th>MATRÍCULA</th><th>NOMBRE</th><th>RESULTADO</th></tr></thead><tbody id="importTable"></tbody></table></div><div class="v05-header-actions"><button id="importConfirm" type="button" class="btn btn-orange hidden">✓ Confirmar importación</button><a id="importDownload" class="btn btn-outline hidden" href="#">↓ Descargar códigos QR en ZIP</a></div></div></section>
+ <section class="view hidden" id="view-profile"><div class="view-header"><div><span class="eyebrow blue-text">IDENTIFICACIÓN INSTITUCIONAL</span><h3>Mi perfil y credencial digital</h3><p>Tu información personal y código QR, vinculado al escáner Android.</p></div></div><div id="profileCard" class="panel v05-profile">Cargando perfil…</div></section>
+ <section class="view hidden" id="view-student"><div class="view-header"><div><span class="eyebrow blue-text">PORTAL ESTUDIANTIL</span><h3>Mi espacio universitario</h3><p>Credencial, matrícula y registros propios de acceso al campus.</p></div></div><div id="studentCard" class="panel v05-profile">Cargando…</div><div class="stat-grid v05-student-stats"><article class="stat-card"><div class="stat-label">DÍAS CON ENTRADA REGISTRADA</div><strong class="stat-number" id="studentDays">0</strong></article><article class="stat-card"><div class="stat-label">MOVIMIENTOS CONSULTADOS</div><strong class="stat-number" id="studentMoves">0</strong></article><article class="stat-card"><div class="stat-label">FALTAS ACADÉMICAS</div><strong class="stat-number">—</strong><p>Sin calendario escolar validado</p></article></div><div class="panel"><h3>Mi calendario de accesos</h3><p class="v05-note">Los días sin escaneo no significan necesariamente faltas académicas.</p><div id="studentCalendar" class="v05-calendar"></div></div><div class="panel"><h3>Mi historial personal</h3><div id="studentEvents" class="activity-list"></div></div></section>
+ <section class="view hidden" id="view-events"><div class="view-header"><div><span class="eyebrow blue-text">JORNADAS EXTENDIDAS</span><h3>Eventos especiales y cierre diario</h3><p>La jornada cierra a las 23:59, pero un evento autorizado puede continuar después de medianoche.</p></div></div><div class="two-col"><form class="panel detailed-form" id="eventForm"><h3>Autorizar evento</h3><label>Nombre del evento<input name="name" required minlength="3" placeholder="Actividad institucional de 24 horas"/></label><label>Inicio<input name="starts_at" type="datetime-local" required/></label><label>Final<input name="ends_at" type="datetime-local" required/></label><button id="eventSubmit" class="btn btn-primary full" type="submit">Programar evento →</button><button id="eventCancelEdit" class="btn btn-outline hidden" type="button">Cancelar edición</button><p class="v05-note">Los eventos activos evitan el cierre de jornada. No modifican la presencia física de las personas.</p></form><div class="panel"><h3>Jornadas programadas</h3><div id="eventsList" class="v05-event-list">Sin eventos programados.</div></div></div></section>
+ <section class="view hidden" id="view-settings"><div class="view-header"><div><span class="eyebrow blue-text">CONFIGURACIÓN INSTITUCIONAL</span><h3>Configuración de aforo y eventos</h3><p>Parámetros de operación del campus y excepciones de cierre diario.</p></div></div><div class="two-col"><form class="panel detailed-form" id="settingsForm"><h3>Parámetros de operación</h3><p>Dirección y Administración pueden modificar estos parámetros.</p><label>Capacidad autorizada del campus<input id="capacityInput" type="number" min="1" max="200000" required/></label><label>Fin del evento especial (opcional)<input id="specialUntil" type="datetime-local"/></label><div class="setting-notice">◉ Si hay un evento nocturno vigente, no se aplica el cierre diario automático hasta que termine. Los movimientos siempre se conservan en el historial.</div><button class="btn btn-primary full" id="saveSettingsBtn" type="submit">Guardar configuración →</button><p id="settingsReadOnly" class="admin-readonly-note hidden"></p></form><div class="panel settings-info"><div class="setting-icon">◷</div><h3>Sobre el cierre automático</h3><p>A las 23:59 se guarda el cierre estadístico. Los accesos sin salida permanecen <strong>pendientes de verificar</strong>; nunca se inventa una salida física. Los eventos especiales extienden la jornada.</p><p>El historial permanece inmutable. La hora del cierre automático es la de la ejecución, no una hora de salida físicamente verificada.</p><div class="setting-notice">Prototipo académico: la autenticación y protección de datos deben reforzarse antes de usar credenciales reales.</div></div></div>
+   <section class="panel appearance-panel" id="appearanceSettings" aria-labelledby="appearanceHeading">
+    <div class="appearance-heading">
+     <div><span class="eyebrow">PERSONALIZACIÓN DEL PANEL</span><h3 id="appearanceHeading">Apariencia</h3><p>Elige una de las seis paletas o diseña la tuya con colores personalizados.</p></div>
+     <span class="appearance-saved-label" aria-hidden="true">PREFERENCIA LOCAL</span>
+    </div>
+    <div class="appearance-options" role="group" aria-label="Paleta de colores">
+     <button type="button" class="appearance-option" data-appearance="borgona" aria-pressed="true">
+      <span class="appearance-preview appearance-preview-borgona" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Borgoña Imperial</strong><small>Clásica, institucional y elegante</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+     <button type="button" class="appearance-option" data-appearance="esmeralda" aria-pressed="false">
+      <span class="appearance-preview appearance-preview-esmeralda" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Esmeralda Real</strong><small>Serena, distinguida y moderna</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+     <button type="button" class="appearance-option" data-appearance="grafito" aria-pressed="false">
+      <span class="appearance-preview appearance-preview-grafito" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Grafito &amp; Oro</strong><small>Minimalista, sobria y tecnológica</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+     <button type="button" class="appearance-option" data-appearance="azul" aria-pressed="false">
+      <span class="appearance-preview appearance-preview-azul" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Azul Medianoche</strong><small>Segura, profunda y ejecutiva</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+     <button type="button" class="appearance-option" data-appearance="ciruela" aria-pressed="false">
+      <span class="appearance-preview appearance-preview-ciruela" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Ciruela Imperial</strong><small>Sofisticada, cálida y original</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+     <button type="button" class="appearance-option" data-appearance="terracota" aria-pressed="false">
+      <span class="appearance-preview appearance-preview-terracota" aria-hidden="true"><span class="preview-sidebar"></span><span class="preview-screen"><i></i><i></i><i></i></span></span>
+      <span class="appearance-option-info"><strong>Terracota Noble</strong><small>Natural, distinguida y acogedora</small></span>
+      <span class="appearance-check" aria-hidden="true">✓</span>
+     </button>
+    </div>
+    <details class="appearance-custom-editor" id="customThemeEditor">
+     <summary class="appearance-custom-summary">
+      <span class="appearance-custom-summary-icon" aria-hidden="true">✦</span>
+      <span class="appearance-custom-summary-text"><strong>Paleta personalizada</strong><small>Crea tus propios colores para fondo, menú y tarjetas</small></span>
+      <span class="appearance-custom-chevron" aria-hidden="true">⌄</span>
+     </summary>
+     <div class="appearance-custom-body">
+      <div class="appearance-custom-intro"><h4>Diseña tu paleta</h4><p>Selecciona qué parte quieres colorear. Arrastra el punto dentro del cuadro, ajusta el tono y aplica tu paleta.</p></div>
+      <div class="appearance-custom-targets" role="group" aria-label="Parte de la interfaz para personalizar">
+       <button type="button" data-custom-target="background" aria-pressed="true"><span class="custom-target-swatch"></span>Fondo</button>
+       <button type="button" data-custom-target="sidebar" aria-pressed="false"><span class="custom-target-swatch"></span>Menú lateral</button>
+       <button type="button" data-custom-target="card" aria-pressed="false"><span class="custom-target-swatch"></span>Tarjetas</button>
+      </div>
+      <div class="appearance-custom-grid">
+       <div class="appearance-color-controls">
+        <div id="customColorArea" class="appearance-color-square" role="slider" tabindex="0" aria-label="Elegir saturación y brillo. Arrastra o usa las flechas del teclado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="Saturación y brillo" aria-describedby="customColorHint"><span id="customColorMarker" class="appearance-color-marker" aria-hidden="true"></span></div>
+        <p id="customColorHint" class="appearance-picker-hint">Arrastra para elegir. Con el teclado, usa las flechas.</p>
+        <label for="customHue" class="appearance-hue-label">Tono de color</label>
+        <input id="customHue" class="appearance-hue-range" type="range" min="0" max="360" step="1" value="0" aria-label="Cambiar tono de color"/>
+        <label for="customHexInput" class="appearance-hue-label">Código HEX</label>
+        <input id="customHexInput" class="appearance-hex" type="text" maxlength="7" spellcheck="false" autocapitalize="characters" placeholder="#481D2B" aria-label="Código hexadecimal del color"/>
+        <span id="customColorStatus" class="appearance-custom-status" role="status" aria-live="polite"></span>
+       </div>
+       <div class="appearance-custom-preview-wrap">
+        <span class="appearance-hue-label">VISTA PREVIA</span>
+        <div class="appearance-custom-preview" id="customThemePreview" aria-label="Vista previa de los colores personalizados">
+         <span class="appearance-custom-mini-sidebar"><i></i><i></i><i></i></span>
+         <span class="appearance-custom-mini-main"><span class="appearance-custom-mini-title"></span><span class="appearance-custom-mini-cards"><i></i><i></i><i></i></span><span class="appearance-custom-mini-panel"></span></span>
+        </div>
+        <p class="appearance-preview-note">Puedes elegir cualquier combinación. Tus colores se guardan en este navegador.</p>
+        <button type="button" class="appearance-custom-apply" data-appearance="personalizado" id="customThemeUse" aria-pressed="false">✓ Usar mi paleta personalizada</button>
+        <button type="button" class="appearance-custom-reset" id="customThemeReset">Restablecer colores iniciales</button>
+       </div>
+      </div>
+     </div>
+    </details>
+    <div class="appearance-footer"><span class="appearance-gold-dot" aria-hidden="true"></span><span>Las seis paletas predefinidas mantienen el oro champán <strong>#DFC397</strong></span><span id="appearanceStatus" role="status" aria-live="polite"></span></div>
+   </section>
+   </section>
+  </main>
+  <footer class="footer">ACCESO LINCE · V0.5.2 <span>Sistema de evaluación local · Uso institucional sujeto a validación</span></footer>
+ </div>
+
+ <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<dialog id="personDialog"><form method="dialog" class="dialog-head"><div><h3>Nuevo integrante</h3><p>Registro con QR automático</p></div><button class="icon-btn" aria-label="Cerrar">✕</button></form>
+<form id="personForm" class="modal-form"><label>Nombre completo<input name="name" required minlength="3" placeholder="Nombre y apellidos"/></label><label>Matrícula o identificación institucional<input name="institutional_id" required minlength="4" placeholder="25050472"/></label><label>Primer apellido (para crear la contraseña de alumnos)<input name="first_surname" placeholder="López"/></label><div class="form-grid"><label>Categoría<select name="type"><option value="alumno">Alumno</option><option value="docente">Docente</option><option value="administrativo">Personal administrativo</option></select></label><label>Estado<select name="status"><option value="activo">Activo</option><option value="inactivo">Inactivo</option></select></label></div><label>Carrera / área<input name="career" placeholder="Ingeniería en Software"/></label><label>Grupo<input name="group_name" placeholder="3A"/></label><label>Foto (opcional)<input id="personPhoto" type="file" accept="image/jpeg,image/png,image/webp"/></label><div class="v05-note">El código QR se asignará automáticamente. Si es alumno, también se creará su cuenta.</div><button class="btn btn-primary full" type="submit">Guardar integrante y generar QR →</button></form></dialog>
+<script src="/app.js" defer></script>
+<script src="/v05-ui.js" defer></script>
+<script src="/guard-shifts-ui.js" defer></script>
+<script src="/guard-operations-ui.js" defer></script>
+<script src="/sidebar-ui.js" defer></script>
+<script src="/admin-motion.js" defer></script>
+<script src="/appearance-themes.js" defer></script>
+</body></html>

@@ -1,0 +1,10 @@
+# Datos locales y privados: no publicar nunca
+lince-data.sqlite*
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+.lince-photo-key*
+*.db
+node_modules/
+.env
+*.log

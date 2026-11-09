@@ -1,0 +1,93 @@
+/* ACCESO LINCE — identidad institucional para la pantalla de inicio.
+ * MISMAS variables de las 6 paletas + paleta personalizadas del panel interior.
+ * Exclusivamente visual: no modifica formularios, sesiones, roles ni la API.
+ * Se carga al final para tener prioridad sobre reglas heredadas azules.
+ */
+#loginScreen,
+.login-shell { background: var(--lince-background-solid); }
+.login-shell .login-art {
+  background: var(--lince-background-solid) !important;
+  background-image: none !important;
+  color: var(--lince-text-on-guinda);
+  border-right: 1px solid rgba(223,195,151,.22);
+}
+.login-shell .login-art::after {
+  border-color: rgba(223,195,151,.13);
+  box-shadow: 0 0 0 80px rgba(223,195,151,.03),
+              0 0 0 180px rgba(223,195,151,.018);
+}
+.login-shell .brand.mark-big,
+.login-shell .login-hero h1 { color: var(--lince-text-on-guinda); }
+.login-shell .login-hero .eyebrow.accent {
+  color: var(--lince-card-solid) !important;
+  letter-spacing: .16em;
+}
+.login-shell .login-hero p { color: var(--lince-header-muted); }
+.login-shell .hero-grid b { color: var(--lince-card-solid); }
+.login-shell .hero-grid span,
+.login-shell .art-footer { color: var(--lince-header-muted); }
+
+/* Fondo crema/arena como las tarjetas del panel administrativo. */
+.login-shell .login-form-side {
+  background: var(--lince-card-solid);
+  color: var(--lince-ink-on-gold);
+}
+.login-shell .login-card {
+  max-width: 495px;
+  color: var(--lince-ink-on-gold);
+}
+.login-shell .login-card h2 {
+  color: var(--lince-ink-on-gold);
+  font-size: clamp(30px, 2.4vw, 42px);
+  line-height: 1.18;
+  overflow-wrap: break-word;
+}
+.login-shell .login-card .muted,
+.login-shell .v05-demo-warning { color: var(--lince-accent-ink); }
+.login-shell .login-card label {
+  color: var(--lince-ink-on-gold);
+  font-weight: 750;
+}
+.login-shell .login-card input {
+  background: #fffdf8;
+  border: 1px solid rgba(72,29,43,.23);
+  color: var(--lince-ink-on-gold);
+  min-height: 52px;
+  border-radius: 11px;
+}
+.login-shell .login-card input::placeholder { color: #82766a; opacity: 1; }
+.login-shell .login-card input:focus-visible {
+  border-color: var(--lince-action);
+  box-shadow: 0 0 0 3px rgba(105,34,52,.15);
+}
+.login-shell .show-password { color: var(--lince-accent-ink); }
+.login-shell .login-card .btn-primary {
+  background: var(--lince-action) !important;
+  color: #fff8ed !important;
+  min-height: 54px;
+  border-radius: 11px;
+  font-size: 13px;
+}
+.login-shell .login-card .btn-primary:hover,
+.login-shell .login-card .btn-primary:focus-visible {
+  background: var(--lince-action-hover) !important;
+  outline-color: var(--lince-focus);
+}
+.login-shell .login-card .btn-primary:disabled { opacity: .7; }
+.login-shell .login-badge { color: #21613e; }
+.login-shell .login-note {
+  background: rgba(255,253,248,.65);
+  color: #765426;
+  border: 1px solid rgba(112,73,40,.18);
+}
+.login-shell .form-error { background:#ffedf0;color:#852238; }
+.login-shell .mobile-brand { color: var(--lince-ink-on-gold); }
+
+@media (max-width: 740px) {
+  .login-shell .login-art { min-height: unset; }
+  .login-shell .login-form-side { padding: 28px 18px 38px; }
+  .login-shell .login-card h2 { font-size: clamp(27px, 6vw, 34px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login-shell .login-art::after { animation: none; }
+}

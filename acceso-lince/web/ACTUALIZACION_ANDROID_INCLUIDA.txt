@@ -1,0 +1,5 @@
+Este paquete YA incluye el shifts.js actualizado para LINCE GUARD V0.4.
+No tienes que aplicar el ZIP de ajuste separado.
+Si ya tienes 300 alumnos registrados en otra carpeta, NO arranques esta copia
+como sustitucion de tu servidor sin migrar su SQLite. Usa el instalador
+ACCESO_LINCE_INSTALADOR_WEB_AUTOMATICO.zip para mantener tu instalacion existente.

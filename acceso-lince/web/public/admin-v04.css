@@ -1,0 +1,24 @@
+/* LINCE ADMIN V0.4: mejoras pequeñas sobre el cascarón visual original UAdeO. */
+.admin-sync-line{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:.85rem;font-weight:700;opacity:.85}
+.admin-sync-dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#d1a759;box-shadow:0 0 0 3px rgba(208,169,89,.15)}
+.admin-sync-dot.connected{background:#21b87a;box-shadow:0 0 0 4px rgba(33,184,122,.16)}
+.admin-sync-dot.disconnected{background:#d86e67}
+.admin-filter-bar{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;padding:14px 22px;border-top:1px solid rgba(127,127,127,.13)}
+.admin-filter-bar label{display:flex;flex-direction:column;gap:5px;min-width:148px;flex:1 1 155px;font-size:.76rem;font-weight:750}
+.admin-filter-bar input,.admin-filter-bar select{width:100%;min-width:0;padding:10px 12px;background:var(--surface,#fff);color:var(--text,#262626);border:1px solid rgba(130,130,130,.3);border-radius:10px;font:inherit}
+.admin-filter-bar .btn{min-height:40px}
+.admin-results-count{padding:0 22px 12px;font-size:.77rem;opacity:.68}
+.admin-reports-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.admin-export-panel{display:flex;gap:22px;justify-content:space-between;align-items:center;padding:24px 28px;margin-top:20px}
+.admin-export-panel p{max-width:720px}
+.admin-visitor-table{margin-top:20px}
+.admin-readonly-note{font-size:.8rem;opacity:.85;margin:10px 0 0}
+.btn-admin-state{font-size:.76rem;font-weight:750;border-radius:10px;border:1px solid rgba(127,127,127,.28);padding:7px 12px;background:transparent;color:inherit;cursor:pointer;white-space:nowrap}
+.btn-admin-state:hover{filter:brightness(.86)}
+.btn-admin-state:disabled{opacity:.4;cursor:not-allowed}
+.admin-report-empty{padding:24px;text-align:center;opacity:.7}
+@media(max-width:900px){.admin-reports-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-export-panel{flex-wrap:wrap}}
+@media(max-width:610px){.admin-reports-grid{grid-template-columns:1fr}.admin-filter-bar{padding:12px}.admin-filter-bar .btn{flex:1}.admin-export-panel{padding:18px}.admin-export-panel .btn{width:100%}}
+
+.visitor-grid.director-view{grid-template-columns:minmax(0,1fr)}
+.visitor-grid.director-view .visitor-result{max-width:760px;width:100%}

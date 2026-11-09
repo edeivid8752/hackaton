@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'mx.uadeo.linceguard'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'mx.uadeo.linceguard'
+        minSdk 26
+        targetSdk 35
+        versionCode 6
+        versionName '0.5.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.camera:camera-core:1.5.3'
+    implementation 'androidx.camera:camera-camera2:1.5.3'
+    implementation 'androidx.camera:camera-lifecycle:1.5.3'
+    implementation 'androidx.camera:camera-view:1.5.3'
+    // Modelo integrado en el APK: lectura disponible sin descargar modelos al usarla.
+    implementation 'com.google.mlkit:barcode-scanning:17.3.0'
+    implementation 'com.google.zxing:core:3.5.3'
+}

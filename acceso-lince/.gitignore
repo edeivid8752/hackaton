@@ -1,0 +1,23 @@
+# Nunca publicar datos personales, contraseñas o claves de dispositivos
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.sqlite3
+*.env
+.env.*
+*.log
+node_modules/
+.gradle/
+**/build/
+*.keystore
+*.jks
+*.p12
+*credential*.txt
+*credencial*.txt
+*contraseñas*.txt
+*claves_estudiantes*.txt
+.lince-photo-key*
+/uploads/
+/private/
+.DS_Store

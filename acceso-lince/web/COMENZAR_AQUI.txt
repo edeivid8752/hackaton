@@ -1,0 +1,41 @@
+﻿ACCESO LINCE V0.5.2 - INSTALACION COMPLETA CON BASE LIMPIA
+
+ESTE ZIP ES EL PROYECTO COMPLETO, NO ES UN PARCHE.
+No hace falta que conserves ni encuentres ninguna carpeta anterior.
+
+PASO 1. Descomprime todo el ZIP (Extraer todo en Windows).
+PASO 2. Abre la carpeta ACCESO_LINCE_V0_5_2_INSTALACION_LIMPIA.
+PASO 3. Ejecuta INICIAR_ACCESO_LINCE.bat (doble clic).
+PASO 4. En el primer inicio, escribe un ID para Direccion (por ejemplo DIR-0001)
+        y su nombre. Copia la contrasena aleatoria que muestra la consola.
+PASO 5. Se abrira http://localhost:3000/ e inicia sesion con ese ID y contrasena.
+PASO 6. Desde Direccion crea administradores, guardias y alumnos o importa Excel.
+        Puedes registrar los dispositivos Android y los turnos desde la misma web.
+
+REQUISITO: Node.js 22.13+ instalado en Windows (https://nodejs.org/)
+NO necesitas npm install ni migrar una base anterior.
+
+BASE DE DATOS: el archivo lince-institucional.sqlite se CREARA al iniciar.
+No viene dentro de este ZIP. La base comienza sin estudiantes,
+visitantes, eventos de acceso, turnos ni dispositivos anteriores.
+Solo se crea la primera cuenta de Direccion cuando la configuras.
+Esta base persiste entre reinicios: NO se limpia cada vez.
+
+MUY IMPORTANTE: guarda la contrasena inicial de Direccion en lugar seguro.
+Si ya ejecutaste el sistema, no se mostrara otra vez.
+
+Para presentar funciones con registros usa EXCLUSIVAMENTE datos ficticios.
+Se adjunta una hoja Excel de 300 alumnos en EJEMPLOS_OPCIONALES, PERO
+NO SE IMPORTA AUTOMATICAMENTE. La puedes ignorar si quieres comenzar vacio.
+
+LINCE GUARD V0.4: se adjunta CODIGO FUENTE en la carpeta ANDROID.
+No es un archivo APK instalable. Para usarlo en telefonos hace falta
+compilar APK y comprobar la conexion de cada dispositivo con el servidor.
+Un telefono necesita estar en la misma red privada de la computadora.
+
+SEGURIDAD: version de evaluacion local. No esta preparada para usar datos
+personales reales o desplegarse en Internet sin HTTPS, politicas de datos,
+respaldos, autenticacion reforzada y revision de seguridad.
+
+AVISO: NO extraigas este ZIP encima de otra instalacion en uso.
+Mantente en una carpeta NUEVA para evitar mezclar bases de datos.

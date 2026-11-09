@@ -1,0 +1,27 @@
+ACCESO LINCE V0.5.2 — pruebas automatizadas
+
+
+> lince-access-demo@0.5.2 test
+> node tests/smoke.js && node tests/mobile.js && node tests/live.js && node tests/connectivity.js && node tests/admin-v04.js && node tests/v05.js && node tests/clean-v05.js && node tests/guard-shifts.js && node tests/guard-operations.js && node tests/migration-052.js
+
+OK: 22 verificaciones de integración superadas.
+OK: 17 verificaciones V0.2 superadas.
+OK: 11 comprobaciones de escaneo continuo y rearme.
+OK: 10 comprobaciones ADMIN→GUARD→aforo para un alumno nuevo.
+OK: 40 verificaciones adicionales ADMIN V0.4.
+(node:10971) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+OK V0.5: 61 verificaciones de roles, cuentas, QR, Android, calendario, correcciones, eventos e importación masiva de 500 alumnos.
+OK V0.5 LIMPIO: cuenta directiva bootstrap, cero alumnos preexistentes, guardia nuevo y contraseña estudiantil aleatoria.
+(node:11012) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+OK Turnos y relevos V0.5.1: 46 verificaciones adicionales de roles, horarios, oferta y recepción, cancelaciones y auditoría.
+(node:11030) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+OK ACCESO LINCE V0.5.2: 64 verificaciones de multidispositivo, gafetes sin PIN, permisos, fotografías, privacidad, revocación y anti-duplicados.
+(node:11048) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+OK migración V0.5.1 → V0.5.2: 9 verificaciones; cuenta, contraseña, QR y datos intactos.
+
+TOTAL: 280 comprobaciones (207 previas + 64 multidispositivo y entradas exprés + 9 migración).
+Advertencia: pasar pruebas automatizadas NO significa certificación de seguridad ni prueba con APK nuevo.

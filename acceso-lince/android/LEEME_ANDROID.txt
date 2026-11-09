@@ -1,0 +1,33 @@
+ACCESO LINCE VIGILANCIA · Android 0.5.0
+=========================================
+
+APLICACIÓN EN ESPAÑOL CON IDENTIDAD INSTITUCIONAL
+- Logotipo idéntico al de la web ACCESO LINCE (archivo original uadeo-logo.png).
+- Paleta de la web: guinda #481D2B, barra lateral #351520, tarjetas oro crema #DFC397,
+  acciones #702C43, texto crema #F0DEB8.
+- Nombre visible de Android: ACCESO LINCE VIGILANCIA.
+- Varios equipos autorizados y vigilantes simultáneos. Sin PIN.
+- Escaneo continuo de credenciales, registro de visitantes/proveedores, turnos,
+  relevos y gafete PDF.
+
+CONFIGURACIÓN
+1. Ejecutar ACCESO LINCE WEB V0.5.2 institucional en la laptop y conectar el
+   móvil a su misma red Wi-Fi.
+2. Dirección/Administración -> Dispositivos Android -> Generar vinculación.
+3. En la aplicación colocar IP del servidor (p. ej. http://10.40.40.145:3000)
+   y código temporal de 16 caracteres. Debe ser un Android autorizado.
+4. Iniciar sesión escaneando el gafete QR de un vigilante ACTIVO.
+5. Trabajar con el escáner y cerrar sesión al cambiar de vigilante.
+
+SEGURIDAD Y LÍMITES
+- Prototipo local para demostraciones con información ficticia. HTTP no ofrece
+  protección adecuada para datos reales. Un gafete QR estático es copiable.
+- Fotografías de INE y gafetes: emplear solo documentos ficticios en pruebas.
+  Confirmación visual del vigilante; sin OCR ni verificación de autenticidad.
+- Conserva el identificador interno de Android para actualizar la app sin
+  cambiar el registro de los equipos, sujeto a la firma de instalación.
+
+PARA OBTENER UN APK
+El ZIP contiene el proyecto Android nativo. El APK requiere compilar en Android
+Studio o GitHub Actions (Android SDK 35, Java 17, Gradle 8.11.1). Si compilas
+un APK con otra firma de depuración, Android podría pedir desinstalar el anterior.

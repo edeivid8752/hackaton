@@ -1,8 +1,0 @@
-{
- "name":"lince-access-demo",
- "version":"0.2.0",
- "private":true,
- "description":"LINCE ADMIN y LINCE GUARD en red local, control de acceso y aforo; sin paquetes npm.",
- "scripts":{"start":"node server.js","test":"node tests/smoke.js && node tests/mobile.js"},
- "engines":{"node":">=22.13.0"}
-}

@@ -1,0 +1,14 @@
+ACCESO LINCE V0.5.2 - COMPROBACIONES DEL PAQUETE LIMPIO
+
+- Se ejecutó la batería completa npm test sobre el proyecto (10 módulos de prueba): CORRECTO.
+- Arranque inicial probado desde una base SQLite nueva: CORRECTO.
+- La configuración inicial crea exactamente una cuenta de Dirección: CORRECTO.
+- Cero registros previos de accesos, turnos, dispositivos e ingresos exprés: CORRECTO.
+- Al iniciar nuevamente no se borran datos ni se vuelve a crear la cuenta de Dirección: CORRECTO.
+- El paquete ZIP no contiene bases de datos ni credenciales predeterminadas reales.
+- El archivo de inicio principal es INICIAR_ACCESO_LINCE.bat.
+
+Esta edición está validada en Node.js 22 en el entorno de pruebas.
+Falta verificar el arranque por lotes en una PC Windows real.
+El proyecto Android incluido es CÓDIGO FUENTE: no contiene APK compilado.
+Para datos reales se requieren HTTPS, políticas de privacidad y una auditoría de seguridad.

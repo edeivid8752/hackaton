@@ -1,0 +1,7 @@
+/* ACCESO LINCE V0.5.2 — extensiones con las mismas variables y paletas. */
+.device-pair-result{min-height:90px;padding:15px;border:1px dashed var(--border,#c6b4b6);border-radius:12px;line-height:1.7;margin:14px 0}
+.device-pair-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:1.45rem;font-weight:850;letter-spacing:.09em;display:block;overflow-wrap:anywhere;margin:8px 0}
+.device-small{font-size:.78rem;opacity:.72;display:block;margin-top:5px}
+.device-danger{color:#b84350;font-weight:750}
+#devicesTable td,#expressTable td{vertical-align:middle}
+@media(max-width:750px){.device-pair-code{font-size:1.15rem}}

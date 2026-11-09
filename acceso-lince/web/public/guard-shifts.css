@@ -1,0 +1,18 @@
+/* Extensión V0.5.1: supervisión de turnos. Respeta variables de las siete paletas. */
+.shift-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:20px 0}
+.shift-stat{padding:19px!important;display:flex;flex-direction:column;gap:8px;min-width:0}
+.shift-stat span{font-size:.72rem;letter-spacing:.08em;font-weight:800;opacity:.68}
+.shift-stat strong{font-size:2.2rem;font-weight:850;line-height:1}
+.shift-stat small{font-size:.78rem;opacity:.67;line-height:1.45}
+.shift-cols{align-items:start;margin:16px 0 20px}
+.shift-info{padding:23px!important;line-height:1.75}
+.shift-info h3{margin-bottom:16px}
+.shift-info p{font-size:.91rem;opacity:.85}
+.shift-pill{border-radius:999px;padding:5px 10px;display:inline-block;font-size:.72rem;font-weight:800;background:rgba(122,126,135,.15);white-space:nowrap}
+.shift-pill.active{background:rgba(18,158,99,.16);color:#138653}
+.shift-pill.attention{background:rgba(209,143,43,.15);color:#af6e18}
+.shift-pill.problem{background:rgba(194,62,81,.16);color:#ae2e49}
+.shift-secondary{font-size:.79rem;opacity:.68;display:block;margin-top:4px}
+#shiftsTable tr td{vertical-align:middle}
+@media(max-width:1000px){.shift-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.shift-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.shift-stat{padding:13px!important}.shift-stat strong{font-size:1.7rem}.shift-cols{display:block}.shift-info{margin-top:16px}.shift-stat span{font-size:.66rem}}
