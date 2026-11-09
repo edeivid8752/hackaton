@@ -1,0 +1,39 @@
+name: Compilar ACCESO LINCE VIGILANCIA desde codigo
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'acceso-lince/android/**'
+      - '.github/workflows/compilar-vigilancia-desde-codigo.yml'
+permissions:
+  contents: read
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Instalar Android SDK 35
+        run: |
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          "${SDKMANAGER}" --install 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Probar escaner
+        working-directory: acceso-lince/android
+        run: bash test_scangate.sh
+      - name: Compilar APK
+        working-directory: acceso-lince/android
+        run: gradle --no-daemon :app:assembleDebug
+      - name: Publicar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ACCESO_LINCE_VIGILANCIA_APK
+          path: acceso-lince/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
