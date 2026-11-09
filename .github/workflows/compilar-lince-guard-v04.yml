@@ -1,0 +1,80 @@
+name: LINCE GUARD V0.4 - APK Android
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'LINCE_GUARD_V0_4_ANDROID*.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compilar:
+    name: Compilar APK LINCE GUARD V0.4
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+      - name: Extraer codigo Android 0.4
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARCHIVE="$(find . -maxdepth 1 -type f -name 'LINCE_GUARD_V0_4_ANDROID*.zip' | sort | tail -1)"
+          test -n "$ARCHIVE"
+          test -s "$ARCHIVE"
+          echo "Paquete detectado: $ARCHIVE"
+          mkdir -p source
+          unzip -oq "$ARCHIVE" -d source
+          test -s source/app/build.gradle
+          test -s source/app/src/main/java/mx/uadeo/linceguard/MainActivity.java
+          test -s source/app/src/main/java/mx/uadeo/linceguard/ApiClient.java
+      - name: Preparar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Pruebas Java del escaner continuo
+        shell: bash
+        working-directory: source
+        run: bash test_scangate.sh
+      - name: Localizar Android SDK en runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          test -d "$ANDROID_HOME"
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          test -x "$SDKMANAGER"
+          echo "$(dirname "$SDKMANAGER")" >> "$GITHUB_PATH"
+          "$SDKMANAGER" --version
+      - name: Instalar SDK Android 35
+        shell: bash
+        run: sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+      - name: Preparar Gradle 8.11.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Compilar APK
+        shell: bash
+        working-directory: source
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+      - name: Validar y etiquetar APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s source/app/build/outputs/apk/debug/app-debug.apk
+          cp source/app/build/outputs/apk/debug/app-debug.apk LINCE_GUARD_V0_4_DEBUG.apk
+          sha256sum LINCE_GUARD_V0_4_DEBUG.apk > LINCE_GUARD_V0_4_DEBUG.sha256
+          ls -lh LINCE_GUARD_V0_4_DEBUG.apk
+      - name: Publicar APK descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: LINCE_GUARD_V0_4_APK
+          path: |
+            LINCE_GUARD_V0_4_DEBUG.apk
+            LINCE_GUARD_V0_4_DEBUG.sha256
+          if-no-files-found: error
+          retention-days: 14
