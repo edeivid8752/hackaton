@@ -1,0 +1,90 @@
+name: ACCESO LINCE VIGILANCIA - Compilar APK
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ACCESO_LINCE_VIGILANCIA_ANDROID_V0_5_FUENTE*.zip'
+      - '.github/workflows/compilar-acceso-lince-vigilancia.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compilar:
+    name: Generar APK de ACCESO LINCE VIGILANCIA
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Extraer proyecto Android
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARCHIVE="$(find . -maxdepth 1 -type f -name 'ACCESO_LINCE_VIGILANCIA_ANDROID_V0_5_FUENTE*.zip' | sort | tail -1)"
+          if [ -z "$ARCHIVE" ] || [ ! -s "$ARCHIVE" ]; then
+            echo "::error::No se encontro el ZIP del proyecto Android. Subelo sin descomprimir en la raiz del repositorio."
+            exit 1
+          fi
+          echo "Paquete: $ARCHIVE"
+          mkdir -p source
+          unzip -oq "$ARCHIVE" -d source
+          test -s source/app/build.gradle
+          test -s source/app/src/main/java/mx/uadeo/linceguard/MainActivity.java
+          test -s source/app/src/main/res/drawable-nodpi/logotipo_uadeo.png
+          grep -q 'ACCESO LINCE VIGILANCIA' source/app/src/main/AndroidManifest.xml
+
+      - name: Preparar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Ejecutar pruebas del escaner continuo
+        shell: bash
+        working-directory: source
+        run: bash test_scangate.sh
+
+      - name: Encontrar SDK Manager
+        shell: bash
+        run: |
+          set -euo pipefail
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          test -x "$SDKMANAGER"
+          echo "$(dirname "$SDKMANAGER")" >> "$GITHUB_PATH"
+
+      - name: Instalar Android SDK 35
+        shell: bash
+        run: sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Preparar Gradle 8.11.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+
+      - name: Compilar APK de prueba
+        shell: bash
+        working-directory: source
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+
+      - name: Preparar artefacto instalable
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s source/app/build/outputs/apk/debug/app-debug.apk
+          cp source/app/build/outputs/apk/debug/app-debug.apk ACCESO_LINCE_VIGILANCIA_INSTALAR.apk
+          sha256sum ACCESO_LINCE_VIGILANCIA_INSTALAR.apk > ACCESO_LINCE_VIGILANCIA_INSTALAR.sha256
+          ls -lh ACCESO_LINCE_VIGILANCIA_INSTALAR.apk
+
+      - name: Publicar APK para descargar
+        uses: actions/upload-artifact@v4
+        with:
+          name: ACCESO_LINCE_VIGILANCIA_APK
+          path: |
+            ACCESO_LINCE_VIGILANCIA_INSTALAR.apk
+            ACCESO_LINCE_VIGILANCIA_INSTALAR.sha256
+          retention-days: 30
+          if-no-files-found: error
