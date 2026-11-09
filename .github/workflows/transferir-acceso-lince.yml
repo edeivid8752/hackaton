@@ -1,0 +1,49 @@
+name: Reemplazar hackaton por ACCESO LINCE completo
+on:
+  push:
+    paths:
+      - .github/workflows/transferir-acceso-lince.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reemplazo:
+    if: github.repository == 'edeivid8752/hackaton'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Obtener repositorio destino
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Copiar proyecto original íntegro y reemplazar archivos previos
+        shell: bash
+        run: |
+          set -euo pipefail
+          ORIGEN="$(mktemp -d)"
+          git -C "$ORIGEN" init -q
+          git -C "$ORIGEN" remote add origin https://github.com/JREP4114/APP-android.git
+          git -C "$ORIGEN" fetch -q --depth=1 origin b977a76a053bead65d0bcc57426d307a9cc9d1b9
+          git -C "$ORIGEN" checkout -q --detach FETCH_HEAD
+
+          # Verificar los componentes principales antes de reemplazar nada.
+          test -s "$ORIGEN/acceso-lince/web/server.js"
+          test -s "$ORIGEN/acceso-lince/android/app/build.gradle"
+          test -s "$ORIGEN/acceso-lince/documentacion/ACCESO_LINCE_MANUAL_OPERATIVO_COMPLETO_2026.pdf"
+          test -s "$ORIGEN/acceso-lince/documentacion/ACCESO_LINCE_MEMORIA_TECNICA_HACKATON_2026.pdf"
+
+          # Conservar solamente la metadata Git; eliminar la versión antigua de la rama.
+          find "$GITHUB_WORKSPACE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf -- {} +
+          rsync -a --exclude='.git' "$ORIGEN/" "$GITHUB_WORKSPACE/"
+
+          cd "$GITHUB_WORKSPACE"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m 'Reemplazar contenido antiguo con ACCESO LINCE completo [skip ci]'
+          git push origin HEAD:main
