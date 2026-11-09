@@ -38,7 +38,9 @@ jobs:
 
           # Conservar solamente la metadata Git; eliminar la versión antigua de la rama.
           find "$GITHUB_WORKSPACE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf -- {} +
-          rsync -a --exclude='.git' "$ORIGEN/" "$GITHUB_WORKSPACE/"
+          rsync -a --exclude='.git' --exclude='.github/workflows/' "$ORIGEN/" "$GITHUB_WORKSPACE/"
+          mkdir -p "$GITHUB_WORKSPACE/.github/workflows"
+          git restore --source=HEAD --worktree -- .github/workflows/transferir-acceso-lince.yml
 
           cd "$GITHUB_WORKSPACE"
           git config user.name 'github-actions[bot]'
